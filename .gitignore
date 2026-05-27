@@ -170,3 +170,20 @@ paper/*.fls
 paper/*.log
 paper/*.synctex.gz
 paper/*.toc
+
+# Research papers (text and pdf)
+/AI_Layoffs_Full_Research_Paper.pdf
+/AI_Layoffs_Full_Research_Paper.txt
+/AI_Layoffs_Analysis_Paper.pdf
+/AI_Layoffs_Analysis_Paper.txt
+
+# Datasets
+/ai_layoffs_firm_level.csv
+/ai_layoffs_firm_level.dta
+/ai_exposure_occupation_level.csv
+/ai_exposure_occupation_level.dta
+
+# Reference pictures and figures
+/paper_figures/
+/paper/*.png
+
