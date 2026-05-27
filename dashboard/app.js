@@ -33,36 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initDashboard() {
-    // 1. Bind tab buttons
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const tabId = btn.getAttribute("data-tab");
-            switchTab(tabId);
-        });
-    });
-
-    // 2. Bind Stata sidebar buttons
-    document.querySelectorAll(".stata-nav-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const id = btn.getAttribute("id");
-            if (id && id.startsWith("stata-btn-")) {
-                const sectionId = id.substring("stata-btn-".length);
-                switchStataNav(sectionId);
-            }
-        });
-    });
-
-    // 3. Render dynamic content
+    // 1. Render dynamic content
     renderStats();
     renderCompanies();
     renderCitations();
-    loadPaperContent();
     populateResultsTables();
     
-    // 4. Initialize charts
+    // 2. Initialize charts
     initCharts();
 
-    // 5. Setup simulator handlers
+    // 3. Setup simulator handlers
     ["adoptSlider", "policySlider", "augSlider", "earlySlider"].forEach(id => {
         document.getElementById(id)?.addEventListener("input", runSimulation);
     });
@@ -76,7 +56,7 @@ function initDashboard() {
 // 1. Switch Navigation Tabs
 function switchTab(tabId) {
     document.querySelectorAll(".tab-panel").forEach(el => el.classList.remove("active"));
-    document.querySelectorAll(".tab-btn").forEach(el => el.classList.remove("active"));
+    document.querySelectorAll(".nav-btn").forEach(el => el.classList.remove("active"));
     
     const panel = document.getElementById(`tab-${tabId}`);
     const btn = document.getElementById(`btn-${tabId}`);
@@ -87,7 +67,7 @@ function switchTab(tabId) {
     // Force charts to resize and draw cleanly when tab opens
     setTimeout(() => {
         Object.values(charts).forEach(c => c.resize && c.resize());
-    }, 50);
+    }, 80);
 }
 window.switchTab = switchTab;
 
