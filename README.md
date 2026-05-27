@@ -26,14 +26,14 @@ This research investigates the complex, non-linear relationship between corporat
 ```
 ├── README.md                              # This research index
 ├── .gitignore                             # Git exclusion configuration
-├── ai_layoffs_firm_level.csv              # 12-firm, 9-quarter panel dataset (108 observations)
-├── ai_exposure_occupation_level.csv       # 30-occupation, 4-year cohort panel dataset (120 observations)
-├── ai_layoffs_firm_level.dta              # Stata-compatible format for firm panel
-├── ai_exposure_occupation_level.dta       # Stata-compatible format for cohort panel
-├── AI_Layoffs_Full_Research_Paper.pdf     # Full academic paper PDF
-├── AI_Layoffs_Full_Research_Paper.txt     # Plain-text source copy of full research
-├── AI_Layoffs_Analysis_Paper.pdf          # Summary policy analysis paper
-├── AI_Layoffs_Analysis_Paper.txt          # Plain-text summary copy
+├── ai_layoffs_firm_level.csv              # [Local Only] 12-firm, 9-quarter panel dataset (108 observations)
+├── ai_exposure_occupation_level.csv       # [Local Only] 30-occupation, 4-year cohort panel dataset (120 observations)
+├── ai_layoffs_firm_level.dta              # [Local Only] Stata-compatible format for firm panel
+├── ai_exposure_occupation_level.dta       # [Local Only] Stata-compatible format for cohort panel
+├── AI_Layoffs_Full_Research_Paper.pdf     # [Local Only] Full academic paper PDF
+├── AI_Layoffs_Full_Research_Paper.txt     # [Local Only] Plain-text source copy of full research
+├── AI_Layoffs_Analysis_Paper.pdf          # [Local Only] Summary policy analysis paper
+├── AI_Layoffs_Analysis_Paper.txt          # [Local Only] Plain-text summary copy
 │
 ├── dashboard/                             # Interactive Research Portal
 │   ├── index.html                         # Portal UI and framework structure
@@ -52,10 +52,11 @@ This research investigates the complex, non-linear relationship between corporat
 ├── paper/                                 # LaTeX Academic Paper Source
 │   ├── main.tex                           # Full LaTeX paper source file
 │   ├── references.bib                     # Unified bibliography file
-│   └── fig*.png                           # Compiled figures referenced in main.tex
+│   └── fig*.png                           # [Local Only] Compiled figures referenced in main.tex
 │
-├── paper_figures/                         # Exported Publication Charts
+├── paper_figures/                         # [Local Only] Exported Publication Charts
 │   └── fig01_*.pdf & .png                 # Publication-ready figures in vector & raster format
+
 │
 └── analysis_outputs/                      # Raw Script Outputs (CSVs)
     ├── obj1_classification_scores.csv     # Corporate AI-washing evidence ratings
