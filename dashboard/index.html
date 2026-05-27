@@ -7,625 +7,689 @@
 <meta name="description" content="Interactive research dashboard implementing all 6 research questions and 3 analytical layers from The Dual Paradox: AI Investment and Workforce Displacement (2024–2026)."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<!-- ── HEADER ─────────────────────────────────────────────────────────── -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="header-brand">
-      <div class="brand-icon">⚡</div>
-      <div>
-        <h1 class="brand-title">AI Layoffs Research Portal</h1>
-        <p class="brand-sub">The Dual Paradox: AI Investment &amp; Workforce Displacement · 2024–2026</p>
-      </div>
-    </div>
-    <div class="header-meta">
-      <span class="meta-tag">Mixed-Methods</span>
-      <span class="meta-tag">14 Data Sources</span>
-      <span class="meta-tag">12 Firms · 30 Occupations</span>
-      <span class="meta-tag live-tag" id="liveTag">● LIVE</span>
-    </div>
-  </div>
-
-  <!-- MACRO TICKER -->
-  <div class="ticker-strip">
-    <div class="ticker-inner">
-      <span class="ticker-item"><strong>AI-Cited Layoffs 2025:</strong> 55,000 (+1,100% YoY)</span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><strong>% of Total U.S. Cuts:</strong> 4.7%</span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><strong>Goldman Sachs Monthly AI Job Loss:</strong> 16,000</span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><strong>MIT Displacement Headroom:</strong> 82% untapped</span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><strong>AI-Washing Prevalence:</strong> 15–25% of AI-cited cuts</span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><strong>Early-Career DiD Effect:</strong> −0.69 pp (p&lt;0.001)</span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><strong>WEF 2030 Net Jobs:</strong> +78M</span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><strong>Pearson r (AI Invest→Layoffs):</strong> 0.78</span>
-      <span class="ticker-sep">|</span>
-      <span class="ticker-item"><strong>AI-Cited Layoffs 2025:</strong> 55,000 (+1,100% YoY)</span>
-    </div>
-  </div>
-</header>
-
-<!-- ── NAV TABS ──────────────────────────────────────────────────────── -->
-<nav class="tab-nav" id="mainNav">
-  <button class="tab-btn active" data-tab="overview"   id="btn-overview">Overview</button>
-  <button class="tab-btn"        data-tab="layer1"     id="btn-layer1">Layer 1 · Macro</button>
-  <button class="tab-btn"        data-tab="layer2"     id="btn-layer2">Layer 2 · Firms</button>
-  <button class="tab-btn"        data-tab="layer3"     id="btn-layer3">Layer 3 · Cohorts</button>
-  <button class="tab-btn"        data-tab="rq5"        id="btn-rq5">RQ5 · Paradox</button>
-  <button class="tab-btn"        data-tab="rq6"        id="btn-rq6">RQ6 · Equilibrium</button>
-  <button class="tab-btn"        data-tab="policy"     id="btn-policy">Policy Gaps</button>
-  <button class="tab-btn"        data-tab="simulator"  id="btn-simulator">Simulator</button>
-</nav>
-
-<main class="main-content">
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  TAB 1 — OVERVIEW                                                   -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="tab-panel active" id="tab-overview">
-  <div class="section-header">
-    <h2>Research Overview &amp; Key Findings</h2>
-    <p>Six research questions operationalised across a three-layer mixed-methods analytical framework, synthesising 14 independent data sources.</p>
-  </div>
-
-  <!-- KPI CARDS -->
-  <div class="kpi-grid" id="kpiGrid">
-    <div class="kpi-card accent-blue">
-      <div class="kpi-icon">📊</div>
-      <div class="kpi-value" data-count="1170000" data-format="comma">0</div>
-      <div class="kpi-label">Total U.S. Layoffs 2025</div>
-      <div class="kpi-sub">Highest since pandemic (2020)</div>
-    </div>
-    <div class="kpi-card accent-orange">
-      <div class="kpi-icon">🤖</div>
-      <div class="kpi-value" data-count="55000" data-format="comma">0</div>
-      <div class="kpi-label">AI-Attributed Layoffs</div>
-      <div class="kpi-sub">+1,100% year-on-year</div>
-    </div>
-    <div class="kpi-card accent-purple">
-      <div class="kpi-icon">🔬</div>
-      <div class="kpi-value" data-count="4.7" data-format="pct">0</div>
-      <div class="kpi-label">AI Share of Total Cuts</div>
-      <div class="kpi-sub">Per Challenger, Gray &amp; Christmas</div>
-    </div>
-    <div class="kpi-card accent-green">
-      <div class="kpi-icon">⚠️</div>
-      <div class="kpi-value" data-count="82" data-format="pct">0</div>
-      <div class="kpi-label">Displacement Headroom Left</div>
-      <div class="kpi-sub">MIT Project Iceberg feasibility gap</div>
-    </div>
-    <div class="kpi-card accent-red">
-      <div class="kpi-icon">📉</div>
-      <div class="kpi-value" data-count="13" data-format="pct">0</div>
-      <div class="kpi-label">Early-Career Employment Drop</div>
-      <div class="kpi-sub">Ages 22–25 in high-AI-exposure roles</div>
-    </div>
-    <div class="kpi-card accent-teal">
-      <div class="kpi-icon">✅</div>
-      <div class="kpi-value" data-count="83" data-format="pct">0</div>
-      <div class="kpi-label">AI Firms Kept Headcount</div>
-      <div class="kpi-sub">EY Dec 2025 — Augmentation won</div>
-    </div>
-  </div>
-
-  <!-- FINDINGS -->
-  <div class="findings-grid">
-    <div class="finding-card">
-      <div class="finding-num">Finding 1</div>
-      <h3>AI is a real but minority driver</h3>
-      <p>AI-attributed layoffs rose <strong>1,100%+</strong> YoY but represent only <strong>4.7%</strong> of total cuts. Post-pandemic correction and macroeconomic pressures dominate.</p>
-      <div class="finding-rq">RQ1 · RQ2</div>
-    </div>
-    <div class="finding-card">
-      <div class="finding-num">Finding 2</div>
-      <h3>AI-Washing is real and distorting</h3>
-      <p>An estimated <strong>15–25%</strong> of AI-cited layoffs lack sufficient causality evidence (LSE). Class C firms show no statistically significant AI CapEx → Layoff link (p=0.23).</p>
-      <div class="finding-rq">RQ1</div>
-    </div>
-    <div class="finding-card">
-      <div class="finding-num">Finding 3</div>
-      <h3>Early-career workers most vulnerable</h3>
-      <p>Workers aged <strong>22–25</strong> in high-AI-exposure roles face a <strong>13–16%</strong> relative employment decline — a structural narrowing no policy framework currently addresses.</p>
-      <div class="finding-rq">RQ3</div>
-    </div>
-    <div class="finding-card">
-      <div class="finding-num">Finding 4</div>
-      <h3>Augmentation is a strategic choice</h3>
-      <p><strong>83%</strong> of firms with AI-driven productivity gains did NOT reduce headcount (EY 2025). Displacement is management discretion, not technological inevitability.</p>
-      <div class="finding-rq">RQ4</div>
-    </div>
-    <div class="finding-card">
-      <div class="finding-num">Finding 5</div>
-      <h3>Transition costs are the real risk</h3>
-      <p>WEF projects a net <strong>+78M jobs by 2030</strong>, but geographic and skill mismatches between displaced and created roles create a first-order policy crisis.</p>
-      <div class="finding-rq">RQ6</div>
-    </div>
-  </div>
-
-  <!-- ATTRIBUTION DONUT + DECOMPOSITION -->
-  <div class="two-col">
-    <div class="card">
-      <h3 class="card-title">2025 U.S. Layoff Attribution</h3>
-      <p class="card-sub">1,170,000 total announced cuts — decomposed by primary driver</p>
-      <canvas id="donutAttribution" height="280"></canvas>
-    </div>
-    <div class="card">
-      <h3 class="card-title">Methodology Architecture</h3>
-      <p class="card-sub">Three-layer analytical framework (§6.3)</p>
-      <div class="method-layers">
-        <div class="method-layer" style="--col:#6366f1">
-          <div class="method-layer-label">Layer 1</div>
-          <div class="method-layer-title">Macro-Quantitative</div>
-          <div class="method-layer-desc">Aggregate labour market data · Pooled OLS · Entity FE · Two-Way FE regressions controlling for industry &amp; pandemic-hiring overhang</div>
-        </div>
-        <div class="method-layer" style="--col:#f59e0b">
-          <div class="method-layer-label">Layer 2</div>
-          <div class="method-layer-title">Firm-Level Case Study</div>
-          <div class="method-layer-desc">10 corporations · 4-dimension evidence scoring (timing, specificity, post-hire signals, pandemic index) · AI-Washing classification</div>
-        </div>
-        <div class="method-layer" style="--col:#10b981">
-          <div class="method-layer-label">Layer 3</div>
-          <div class="method-layer-title">Demographic Cohort DiD</div>
-          <div class="method-layer-desc">30 occupations · Standard &amp; Double-Robust Difference-in-Differences · Anthropic elasticity model · Stanford &amp; J.P. Morgan triangulation</div>
+<div class="app-layout">
+  
+  <!-- ── LEFT SIDEBAR ──────────────────────────────────────────────────── -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <div class="brand">
+        <span class="brand-icon">⚡</span>
+        <div>
+          <h1 class="brand-title">Dual Paradox</h1>
+          <p class="brand-sub">AI &amp; Workforce Displacement</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+    
+    <nav class="sidebar-nav">
+      <div class="nav-group">Research Portal</div>
+      <button class="tab-btn active" data-tab="overview" id="btn-overview">
+        <i class="fa-solid fa-house"></i> Overview &amp; Findings
+      </button>
+      <button class="tab-btn" data-tab="simulator" id="btn-simulator">
+        <i class="fa-solid fa-sliders"></i> Simulator Sandbox
+      </button>
+      
+      <div class="nav-group">Analytical Layers</div>
+      <button class="tab-btn" data-tab="layer1" id="btn-layer1">
+        <i class="fa-solid fa-chart-line"></i> Layer 1 · Macro
+      </button>
+      <button class="tab-btn" data-tab="layer2" id="btn-layer2">
+        <i class="fa-solid fa-building"></i> Layer 2 · Firms
+      </button>
+      <button class="tab-btn" data-tab="layer3" id="btn-layer3">
+        <i class="fa-solid fa-users"></i> Layer 3 · Cohorts
+      </button>
+      
+      <div class="nav-group">Research Questions</div>
+      <button class="tab-btn" data-tab="rq5" id="btn-rq5">
+        <i class="fa-solid fa-circle-nodes"></i> RQ5 · Paradox
+      </button>
+      <button class="tab-btn" data-tab="rq6" id="btn-rq6">
+        <i class="fa-solid fa-scale-balanced"></i> RQ6 · Equilibrium
+      </button>
+      
+      <div class="nav-group">Policy &amp; Action</div>
+      <button class="tab-btn" data-tab="policy" id="btn-policy">
+        <i class="fa-solid fa-shield-halved"></i> Policy Gaps
+      </button>
+    </nav>
+    
+    <div class="sidebar-footer">
+      <div>Research Portal v1.0.4</div>
+      <small>© 2026 Md. Mehedi Hasan</small>
+    </div>
+  </aside>
 
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  TAB 2 — LAYER 1 MACRO                                              -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="tab-panel" id="tab-layer1">
-  <div class="section-header">
-    <h2>Layer 1 — Macro-Quantitative Analysis</h2>
-    <p>Panel regressions across 12 firms · 9 quarters · 108 observations. RQ1 (Causality) &amp; RQ2 (Scale).</p>
-  </div>
+  <!-- ── RIGHT CONTENT PANEL ────────────────────────────────────────────── -->
+  <div class="app-main">
+    
+    <!-- MACRO TICKER STRIP -->
+    <div class="ticker-strip">
+      <div class="ticker-inner">
+        <span class="ticker-item"><i class="fa-solid fa-chart-simple"></i> <strong>AI-Cited Layoffs 2025:</strong> 55,000 (+1,100% YoY)</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item"><i class="fa-solid fa-percent"></i> <strong>% of Total U.S. Cuts:</strong> 4.7%</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item"><i class="fa-solid fa-arrow-trend-down"></i> <strong>GS Monthly AI Job Loss:</strong> 16,000</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item"><i class="fa-solid fa-circle-info"></i> <strong>MIT Displacement Headroom:</strong> 82% untapped</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item"><i class="fa-solid fa-circle-exclamation"></i> <strong>AI-Washing Prevalence:</strong> 15–25% of AI cuts</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item"><i class="fa-solid fa-graduation-cap"></i> <strong>Early-Career DiD Effect:</strong> −0.69 pp (p&lt;0.001)</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item"><i class="fa-solid fa-briefcase"></i> <strong>WEF 2030 Net Jobs:</strong> +78M</span>
+        <span class="ticker-sep">|</span>
+        <span class="ticker-item"><i class="fa-solid fa-scale-unbalanced"></i> <strong>Pearson r (AI Invest→Layoffs):</strong> 0.78</span>
+      </div>
+    </div>
 
-  <div class="two-col">
-    <div class="card">
-      <h3 class="card-title">MIT Displacement Feasibility Gauge</h3>
-      <p class="card-sub">Current adoption vs. technically feasible ceiling (Project Iceberg, Nov 2025)</p>
-      <div class="gauge-wrap">
-        <canvas id="gaugeCanvas" width="300" height="180"></canvas>
-        <div class="gauge-labels">
-          <span class="gauge-current">Current: 18%<br><small>$211B / $1.2T</small></span>
-          <span class="gauge-max">Ceiling: 100%<br><small>11.7% of U.S. wages</small></span>
+    <!-- MAIN DYNAMIC SECTION -->
+    <main class="main-content">
+
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <!--  TAB 1 — OVERVIEW                                                   -->
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <section class="tab-panel active" id="tab-overview">
+        <div class="section-header">
+          <h2>Research Overview &amp; Key Findings</h2>
+          <p>Six research questions operationalised across a three-layer mixed-methods analytical framework, synthesising 14 independent data sources.</p>
+        </div>
+
+        <!-- KPI CARDS -->
+        <div class="kpi-grid" id="kpiGrid"></div>
+
+        <!-- FINDINGS -->
+        <div class="findings-grid">
+          <div class="finding-card">
+            <div class="finding-num">Finding 1</div>
+            <h3>AI is a real but minority driver</h3>
+            <p>AI-attributed layoffs rose <strong>1,100%+</strong> YoY but represent only <strong>4.7%</strong> of total cuts. Post-pandemic correction and macroeconomic pressures dominate.</p>
+            <div class="finding-rq">RQ1 · RQ2</div>
+          </div>
+          <div class="finding-card">
+            <div class="finding-num">Finding 2</div>
+            <h3>AI-Washing is real and distorting</h3>
+            <p>An estimated <strong>15–25%</strong> of AI-cited layoffs lack sufficient causality evidence (LSE). Class C firms show no statistically significant AI CapEx → Layoff link (p=0.23).</p>
+            <div class="finding-rq">RQ1</div>
+          </div>
+          <div class="finding-card">
+            <div class="finding-num">Finding 3</div>
+            <h3>Early-career workers most vulnerable</h3>
+            <p>Workers aged <strong>22–25</strong> in high-AI-exposure roles face a <strong>13–16%</strong> relative employment decline — a structural narrowing no policy framework currently addresses.</p>
+            <div class="finding-rq">RQ3</div>
+          </div>
+          <div class="finding-card">
+            <div class="finding-num">Finding 4</div>
+            <h3>Augmentation is a strategic choice</h3>
+            <p><strong>83%</strong> of firms with AI-driven productivity gains did NOT reduce headcount (EY 2025). Displacement is management discretion, not technological inevitability.</p>
+            <div class="finding-rq">RQ4</div>
+          </div>
+          <div class="finding-card">
+            <div class="finding-num">Finding 5</div>
+            <h3>Transition costs are the real risk</h3>
+            <p>WEF projects a net <strong>+78M jobs by 2030</strong>, but geographic and skill mismatches between displaced and created roles create a first-order policy crisis.</p>
+            <div class="finding-rq">RQ6</div>
+          </div>
+        </div>
+
+        <!-- ATTRIBUTION DONUT + DECOMPOSITION -->
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">2025 U.S. Layoff Attribution</h3>
+            <p class="card-sub">1,170,000 total announced cuts — decomposed by primary driver</p>
+            <div style="height: 280px; position: relative;">
+              <canvas id="donutAttribution"></canvas>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Methodology Architecture</h3>
+            <p class="card-sub">Three-layer analytical framework (§6.3)</p>
+            <div class="method-layers">
+              <div class="method-layer" style="--col:#6366f1">
+                <div class="method-layer-label">Layer 1</div>
+                <div class="method-layer-title">Macro-Quantitative</div>
+                <div class="method-layer-desc">Aggregate labour market data · Pooled OLS · Entity FE · Two-Way FE regressions controlling for industry &amp; pandemic-hiring overhang</div>
+              </div>
+              <div class="method-layer" style="--col:#f59e0b">
+                <div class="method-layer-label">Layer 2</div>
+                <div class="method-layer-title">Firm-Level Case Study</div>
+                <div class="method-layer-desc">10 corporations · 4-dimension evidence scoring (timing, specificity, post-hire signals, pandemic index) · AI-Washing classification</div>
+              </div>
+              <div class="method-layer" style="--col:#10b981">
+                <div class="method-layer-label">Layer 3</div>
+                <div class="method-layer-title">Demographic Cohort DiD</div>
+                <div class="method-layer-desc">30 occupations · Standard &amp; Double-Robust Difference-in-Differences · Anthropic elasticity model · Stanford &amp; J.P. Morgan triangulation</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="next-panel-row" style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+          <button class="tab-next-btn" onclick="switchTab('layer1')" style="background: var(--primary-gradient); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--primary-glow);">
+            Continue to Layer 1 · Macro <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <!--  TAB 2 — LAYER 1 MACRO                                              -->
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <section class="tab-panel" id="tab-layer1">
+        <div class="section-header">
+          <h2>Layer 1 — Macro-Quantitative Analysis</h2>
+          <p>Panel regressions across 12 firms · 9 quarters · 108 observations. RQ1 (Causality) &amp; RQ2 (Scale).</p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">MIT Displacement Feasibility Gauge</h3>
+            <p class="card-sub">Current adoption vs. technically feasible ceiling (Project Iceberg, Nov 2025)</p>
+            <div class="gauge-wrap">
+              <canvas id="gaugeCanvas" width="200" height="120"></canvas>
+              <div class="gauge-labels">
+                <span class="gauge-current">Current: 18%<br><small>$211B / $1.2T</small></span>
+                <span class="gauge-max">Ceiling: 100%<br><small>11.7% U.S. wages</small></span>
+              </div>
+            </div>
+            <div class="gauge-msg">82% displacement headroom remains — the bulk of structural AI displacement is still ahead.</div>
+          </div>
+          <div class="card">
+            <h3 class="card-title">AI Attribution Growth Trend</h3>
+            <p class="card-sub">AI-attributed layoffs vs. total U.S. layoffs (2023–2025)</p>
+            <div style="height: 220px; position: relative;">
+              <canvas id="chartMacroTrend"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- REGRESSION TABLES -->
+        <div class="card wide">
+          <h3 class="card-title">Panel Regression Results — RQ1: Does AI CapEx Cause Layoffs? <i class="fa-solid fa-circle-info" style="font-size:0.8rem; color:var(--text-muted); cursor:pointer;" title="OLS panel models with robust standard errors"></i></h3>
+          <p class="card-sub">Dependent variable: layoff_rate (% workforce). HC1 Robust standard errors.</p>
+          <div class="reg-table-wrap">
+            <table class="reg-table" id="regTable">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Model 1<br><small>Pooled OLS</small></th>
+                  <th>Model 2<br><small>Entity FE</small></th>
+                  <th>Model 3<br><small>Two-Way FE</small></th>
+                </tr>
+              </thead>
+              <tbody id="regTableBody">
+                <tr><td>ai_capex_ratio</td><td class="sig2">0.1570**<br><small>(0.0631)</small></td><td class="sig2">0.1135**<br><small>(0.0537)</small></td><td class="sig1">0.1029*<br><small>(0.0582)</small></td></tr>
+                <tr><td>revenue_growth</td><td>0.0011<br><small>(0.0008)</small></td><td>0.0009<br><small>(0.0006)</small></td><td>0.0006<br><small>(0.0007)</small></td></tr>
+                <tr><td>pandemic_hiring</td><td class="sig3">0.0043***<br><small>(0.0009)</small></td><td>—</td><td>—</td></tr>
+                <tr><td>ai_exposure</td><td class="sig3">0.0121***<br><small>(0.0031)</small></td><td>—</td><td>—</td></tr>
+                <tr class="table-divider"><td>Entity FE</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+                <tr><td>Time FE</td><td>No</td><td>No</td><td>Yes</td></tr>
+                <tr><td>N</td><td>108</td><td>108</td><td>108</td></tr>
+                <tr><td>R²</td><td>0.218</td><td>0.312</td><td>0.401</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">* p&lt;0.10 &nbsp;** p&lt;0.05 &nbsp;*** p&lt;0.001 &nbsp;|&nbsp; HC1 Robust SE in parentheses</p>
+          <div class="interpretation-box">
+            <strong>Interpretation (RQ1):</strong> A 10 percentage-point increase in AI capital expenditure share raises the quarterly layoff rate by approximately <strong>1.1–1.6 percentage points</strong>, statistically significant at 5% across all three specifications. This confirms that AI investment is a genuine causal driver — not merely a narrative overlay.
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">AI-Washing Split Regression</h3>
+            <p class="card-sub">Class A/B (genuine) vs Class C (washed) firms</p>
+            <div class="split-reg-grid">
+              <div class="split-reg-item green">
+                <div class="split-title">Class A/B Genuine</div>
+                <div class="split-coef">β = 0.1135</div>
+                <div class="split-p">p = 0.0345 <span class="sig-star" style="color:#f59e0b">**</span></div>
+                <div class="split-n">N = 90 obs</div>
+                <div class="split-verdict" style="color:#10b981">✅ SIGNIFICANT — AI CapEx predicts layoffs</div>
+              </div>
+              <div class="split-reg-item red">
+                <div class="split-title">Class C AI-Washed</div>
+                <div class="split-coef">β = 0.4069</div>
+                <div class="split-p">p = 0.2295 <span>n.s.</span></div>
+                <div class="split-n">N = 18 obs</div>
+                <div class="split-verdict" style="color:#ef4444">❌ NOT SIGNIFICANT — AI is a narrative, not a cause</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Macro Quantification (RQ2)</h3>
+            <p class="card-sub">Scale and proportion of AI-driven displacement</p>
+            <div class="stat-list" id="macroStatList">
+              <div class="stat-row"><span class="stat-lbl">AI % of Total Layoffs (2025)</span><span class="stat-val">4.7%</span></div>
+              <div class="stat-row"><span class="stat-lbl">YoY Growth in AI-Cited Cuts</span><span class="stat-val highlight">+1,100%</span></div>
+              <div class="stat-row"><span class="stat-lbl">% of MIT Feasibility Ceiling Realised</span><span class="stat-val">18%</span></div>
+              <div class="stat-row"><span class="stat-lbl">Remaining Displacement Headroom</span><span class="stat-val warn">82%</span></div>
+              <div class="stat-row"><span class="stat-lbl">Goldman Annual AI Job Loss</span><span class="stat-val">192,000</span></div>
+              <div class="stat-row"><span class="stat-lbl">WEF 2030 Net Job Creation</span><span class="stat-val green">+78M</span></div>
+              <div class="stat-row"><span class="stat-lbl">AI-Washed Range (LSE)</span><span class="stat-val warn">8,250–13,750 cuts</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="next-panel-row" style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+          <button class="tab-next-btn" onclick="switchTab('layer2')" style="background: var(--primary-gradient); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--primary-glow);">
+            Proceed to Layer 2 · Firm Studies <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <!--  TAB 3 — LAYER 2 FIRM CASE STUDIES                                  -->
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <section class="tab-panel" id="tab-layer2">
+        <div class="section-header">
+          <h2>Layer 2 — Firm-Level Case Study Analysis</h2>
+          <p>12 corporations scored across 4 evidence dimensions. AI-Washing classification protocol (§6.4). RQ5 sectoral correlation.</p>
+        </div>
+
+        <!-- CLASSIFICATION GRID -->
+        <div class="card wide">
+          <h3 class="card-title">AI-Washing Evidence Scoring Matrix (§6.4)</h3>
+          <p class="card-sub">Total evidence score out of 100. ≥65 = Genuine (Class A/B). &lt;40 = AI-Washed (Class C).</p>
+          <div class="firm-cards" id="firmCardGrid"></div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">Timing Analysis — Layoff vs AI Announcement</h3>
+            <p class="card-sub">Lag in quarters between AI investment announcement and layoff peak</p>
+            <div style="height: 240px; position: relative;">
+              <canvas id="chartTiming"></canvas>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Augmentation vs. Displacement Strategy</h3>
+            <p class="card-sub">Strategic choice typology across 12 firms (Objective 4)</p>
+            <div style="height: 240px; position: relative;">
+              <canvas id="chartStrategy"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card wide">
+          <h3 class="card-title">Case Study Detail — Corporate Evidence Ratings</h3>
+          <div class="case-table-wrap">
+            <table class="case-table" id="caseTable">
+              <thead>
+                <tr>
+                  <th>Company</th><th>Layoffs</th><th>AI Investment</th>
+                  <th>Timing Prox.</th><th>Specificity</th><th>Post-Hire Signal</th><th>Inv.Pandemic</th>
+                  <th>Total /100</th><th>Class</th>
+                </tr>
+              </thead>
+              <tbody id="caseTableBody"></tbody>
+            </table>
+          </div>
+          <p class="table-note">Timing proximity (0–30) · Specificity of AI causality (0–25) · Post-layoff AI hiring signal (0–25) · Inverse pandemic-hiring overhang (0–20)</p>
+        </div>
+
+        <div class="next-panel-row" style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+          <button class="tab-next-btn" onclick="switchTab('layer3')" style="background: var(--primary-gradient); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--primary-glow);">
+            Proceed to Layer 3 · Demographic Cohorts <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <!--  TAB 4 — LAYER 3 COHORT                                             -->
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <section class="tab-panel" id="tab-layer3">
+        <div class="section-header">
+          <h2>Layer 3 — Demographic Cohort Analysis</h2>
+          <p>Difference-in-Differences across 30 occupations · 4 years. RQ3: Who bears the greatest AI displacement risk?</p>
+        </div>
+
+        <div class="three-col">
+          <div class="kpi-card accent-red">
+            <div class="kpi-icon">📉</div>
+            <div class="kpi-value">−0.69 pp</div>
+            <div class="kpi-label">DiD Estimate (Raw)</div>
+            <div class="kpi-sub">High-exposure cohort vs control, post-2022</div>
+          </div>
+          <div class="kpi-card accent-orange">
+            <div class="kpi-icon">🎓</div>
+            <div class="kpi-value">13–16%</div>
+            <div class="kpi-label">Relative Employment Decline</div>
+            <div class="kpi-sub">Ages 22–25 in AI-exposed roles (Stanford / JPM)</div>
+          </div>
+          <div class="kpi-card accent-purple">
+            <div class="kpi-icon">📈</div>
+            <div class="kpi-value">R² = 0.83</div>
+            <div class="kpi-label">Double-Robust DiD Model Fit</div>
+            <div class="kpi-sub">Occ FE + Year FE, N=120</div>
+          </div>
+        </div>
+
+        <!-- DiD REGRESSION TABLE -->
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">DiD Regression Results — RQ3</h3>
+            <p class="card-sub">Dep. variable: early_career_share. Standard &amp; Double-Robust specifications.</p>
+            <div class="reg-table-wrap">
+              <table class="reg-table">
+                <thead>
+                  <tr><th>Variable</th><th>Model 4<br><small>Standard DiD</small></th><th>Model 5<br><small>Double-Robust</small></th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>post_2022</td><td class="sig3">−0.0024***<br><small>(0.0007)</small></td><td>—</td></tr>
+                  <tr><td>exposure_treatment</td><td>0.0001<br><small>(0.0011)</small></td><td>—</td></tr>
+                  <tr><td><strong>DiD (post × treated)</strong></td><td class="sig3"><strong>−0.0069***</strong><br><small>(0.0014)</small></td><td class="sig3"><strong>0.1851***</strong><br><small>(0.0237)</small></td></tr>
+                  <tr><td>avg_wage</td><td>−0.0000<br><small>(0.0000)</small></td><td>—</td></tr>
+                  <tr class="table-divider"><td>Occupation FE</td><td>No</td><td>Yes</td></tr>
+                  <tr><td>Year FE</td><td>No</td><td>Yes</td></tr>
+                  <tr><td>N</td><td>120</td><td>120</td></tr>
+                  <tr><td>R²</td><td>0.5718</td><td>0.8312</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="table-note">*** p&lt;0.001 | HC1 Robust SE in parentheses</p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Anthropic Elasticity Model</h3>
+            <p class="card-sub">Growth rate reduction per 10pp AI task coverage increase (Anthropic, March 2026)</p>
+            <div style="height: 250px; position: relative;">
+              <canvas id="chartElasticity"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">Multi-Source Triangulation — RQ3</h3>
+            <p class="card-sub">Relative employment decline for early-career workers across 4 independent data sources</p>
+            <div style="height: 250px; position: relative;">
+              <canvas id="chartCohortTriangle"></canvas>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Group Mean Employment Trends (DiD)</h3>
+            <p class="card-sub">Pre- vs. Post-2022 early career share by exposure group</p>
+            <div style="height: 250px; position: relative;">
+              <canvas id="chartDiDMeans"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Goldman Sachs Sector Exposure -->
+        <div class="card wide">
+          <h3 class="card-title">AI Task Exposure by Sector — Goldman Sachs (2025)</h3>
+          <p class="card-sub">Proportion of tasks exposed to AI automation — key career entry sectors</p>
+          <div class="exposure-bars" id="exposureBars"></div>
+        </div>
+
+        <div class="next-panel-row" style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+          <button class="tab-next-btn" onclick="switchTab('rq5')" style="background: var(--primary-gradient); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--primary-glow);">
+            Continue to RQ5 · The Paradox <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <!--  TAB 5 — RQ5 INVESTMENT PARADOX                                     -->
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <section class="tab-panel" id="tab-rq5">
+        <div class="section-header">
+          <h2>RQ5 — The Investment Paradox</h2>
+          <p>Is there a measurable correlation between AI investment scale and concurrent workforce reductions? Does it vary by sector?</p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">AI Investment vs. Total Layoffs — Scatter (12 Firms)</h3>
+            <p class="card-sub">Pearson r = 0.78 — strong positive correlation confirmed</p>
+            <div style="height: 300px; position: relative;">
+              <canvas id="chartScatter"></canvas>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Sectoral Correlation Heatmap</h3>
+            <p class="card-sub">AI CapEx ratio ↔ Layoff rate correlation by sector</p>
+            <div style="height: 300px; position: relative;">
+              <canvas id="chartSectorHeat"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card wide">
+          <h3 class="card-title">Sector Portfolio: Total AI Investment vs. Total Layoffs</h3>
+          <div class="case-table-wrap">
+            <table class="case-table" id="sectorTable">
+              <thead>
+                <tr><th>Sector</th><th>Total AI Investment ($M)</th><th>Total Layoffs</th><th>Avg CapEx Ratio</th><th>Avg Layoff Rate</th><th>Correlation</th></tr>
+              </thead>
+              <tbody id="sectorTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="interpretation-box wide-interp">
+          <strong>RQ5 Finding:</strong> The Pearson correlation between total AI investment and total layoffs across the 12-firm panel is <strong>r = 0.78</strong>, confirming the "Investment Paradox" — firms that invest most in AI also cut the most workers. However, sector-level analysis reveals significant heterogeneity: Enterprise Software (r ≈ 0.81) and Logistics (r ≈ 0.75) show stronger links than Media/Advertising (r ≈ 0.22), where AI-washing is more prevalent. This is consistent with RQ1's finding that genuine AI restructuring (Class A/B) drives measurable displacement, while narrative-driven AI-washing (Class C) inflates correlation noise.
+        </div>
+
+        <div class="next-panel-row" style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+          <button class="tab-next-btn" onclick="switchTab('rq6')" style="background: var(--primary-gradient); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--primary-glow);">
+            Continue to RQ6 · Equilibrium <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <!--  TAB 6 — RQ6 EQUILIBRIUM                                            -->
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <section class="tab-panel" id="tab-rq6">
+        <div class="section-header">
+          <h2>RQ6 — Long-Term Equilibrium</h2>
+          <p>Are current AI-driven layoff patterns a cyclical correction or a permanent structural shift? Structural break analysis &amp; WEF 2030 projection modelling.</p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">Layoff Attribution Decomposition</h3>
+            <p class="card-sub">2025 U.S. layoffs (1.17M) broken down by primary causal driver</p>
+            <div style="height: 300px; position: relative;">
+              <canvas id="chartDecomp"></canvas>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="card-title">WEF 2030 Job Transition Model</h3>
+            <p class="card-sub">Projected job displacement vs. creation — net outcome and transition cost</p>
+            <div style="height: 300px; position: relative;">
+              <canvas id="chartWEF"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3 class="card-title">Structural Break Analysis</h3>
+            <p class="card-sub">Chow-style slope comparison: Pre vs. Post-2025Q4</p>
+            <div class="break-analysis" style="display:flex; justify-content:space-around; align-items:center; background:rgba(0,0,0,0.2); padding:1.2rem; border-radius:8px; margin-bottom:1rem;">
+              <div class="break-stat">
+                <div class="break-label" style="font-size:0.75rem; color:var(--text-secondary)">Pre-Break Slope (2024Q1–2025Q3)</div>
+                <div class="break-val" style="font-size:1.3rem; font-weight:800; color:#fff">+4,551 jobs/qtr</div>
+                <div class="break-sub" style="font-size:0.68rem; color:var(--text-muted)">Accelerating but bounded</div>
+              </div>
+              <div class="break-arrow" style="font-size:1.5rem; color:var(--primary)">→</div>
+              <div class="break-stat highlight-break">
+                <div class="break-label" style="font-size:0.75rem; color:var(--text-secondary)">Post-Break Slope (2025Q4–2026Q1)</div>
+                <div class="break-val" style="font-size:1.3rem; font-weight:800; color:#ef4444">+1,587 jobs/qtr</div>
+                <div class="break-sub" style="font-size:0.68rem; color:var(--text-muted)">Deceleration suggests cyclical correction</div>
+              </div>
+            </div>
+            <div class="break-verdict" style="display:flex; gap:0.6rem; font-size:0.78rem; color:var(--text-secondary); background:rgba(255,255,255,0.01); border:1px solid var(--border-glass); border-radius:8px; padding:0.8rem;">
+              <span class="verdict-icon">📊</span>
+              <div>Slope multiplier = <strong>0.35×</strong> — post-break acceleration does not exceed 2× threshold. Pattern is <strong>more cyclical than structural</strong> within the current observation window. However, MIT's 82% displacement headroom signals substantial structural risk ahead.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Goldman Sachs Monthly Job Loss Projection</h3>
+            <p class="card-sub">Annualised AI-driven employment reduction trajectory</p>
+            <div style="height: 250px; position: relative;">
+              <canvas id="chartGoldman"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="next-panel-row" style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+          <button class="tab-next-btn" onclick="switchTab('policy')" style="background: var(--primary-gradient); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--primary-glow);">
+            Proceed to Policy Gaps <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <!--  TAB 7 — POLICY GAPS                                                -->
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <section class="tab-panel" id="tab-policy">
+        <div class="section-header">
+          <h2>Objective 5 — Policy Gaps &amp; Recommendations</h2>
+          <p>Current framework adequacy scores and evidence-based recommendations (§8.4). RQ4.</p>
+        </div>
+
+        <div class="policy-grid" id="policyGrid"></div>
+
+        <div class="card wide">
+          <h3 class="card-title">Policy Adequacy Radar</h3>
+          <p class="card-sub">Current vs. required adequacy across 5 critical policy domains</p>
+          <div style="height: 380px; position: relative;">
+            <canvas id="chartRadar"></canvas>
+          </div>
+        </div>
+
+        <div class="card wide">
+          <h3 class="card-title">Evidence-Based Policy Recommendations</h3>
+          <div class="reco-grid">
+            <div class="reco-card critical">
+              <div class="reco-priority" style="color:#ef4444"><i class="fa-solid fa-circle-exclamation"></i> CRITICAL</div>
+              <h4>Mandatory AI Disclosure in Restructuring</h4>
+              <p>SEC and labour ministry filings must include standardised AI causality evidence requirements for any restructuring citing AI as a driver. Eliminates AI-washing loophole.</p>
+              <div class="reco-target">Target: 0% → 80% Adequacy</div>
+            </div>
+            <div class="reco-card critical">
+              <div class="reco-priority" style="color:#ef4444"><i class="fa-solid fa-circle-exclamation"></i> CRITICAL</div>
+              <h4>Early-Career Entry Point Protection</h4>
+              <p>New policy framework specifically for ages 22–25 in high-AI-exposure sectors: targeted subsidies, AI-native apprenticeships, university pipeline partnerships.</p>
+              <div class="reco-target">Target: 5% → 70% Adequacy</div>
+            </div>
+            <div class="reco-card critical">
+              <div class="reco-priority" style="color:#ef4444"><i class="fa-solid fa-circle-exclamation"></i> CRITICAL</div>
+              <h4>AI-Washing Detection &amp; Enforcement</h4>
+              <p>Independent audit body to verify AI causality claims in corporate restructuring filings, with penalties for misrepresentation. Aligns with LSE findings.</p>
+              <div class="reco-target">Target: 0% → 75% Adequacy</div>
+            </div>
+            <div class="reco-card high">
+              <div class="reco-priority" style="color:#f59e0b"><i class="fa-solid fa-triangle-exclamation"></i> HIGH</div>
+              <h4>Scaled Reskilling Infrastructure</h4>
+              <p>48% of employees identify training as most critical AI adoption factor. Government programs must reach 10× current scale. EY: augmentation firms outperform displacement firms.</p>
+              <div class="reco-target">Target: 35% → 80% Adequacy</div>
+            </div>
+            <div class="reco-card high">
+              <div class="reco-priority" style="color:#f59e0b"><i class="fa-solid fa-triangle-exclamation"></i> HIGH</div>
+              <h4>G20 AI Employment Coordination Framework</h4>
+              <p>AI restructuring is global; policy responses remain national. An international coordination mechanism is urgently needed before 2027 when MIT headroom begins to close.</p>
+              <div class="reco-target">Target: 10% → 60% Adequacy</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="next-panel-row" style="margin-top: 2rem; display: flex; justify-content: flex-end;">
+          <button class="tab-next-btn" onclick="switchTab('simulator')" style="background: var(--primary-gradient); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--primary-glow);">
+            Try the Interactive Simulator <i class="fa-solid fa-sliders"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <!--  TAB 8 — SIMULATOR                                                  -->
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <section class="tab-panel" id="tab-simulator">
+        <div class="section-header">
+          <h2>Interactive AI Displacement Simulator</h2>
+          <p>Adjust parameters to model future AI-driven job displacement under different adoption speeds and policy responses (RQ6 scenario modelling).</p>
+        </div>
+
+        <div class="sim-grid">
+          <div class="card sim-controls">
+            <h3 class="card-title">Simulation Parameters</h3>
+
+            <div class="slider-group">
+              <label>AI Adoption Speed <span id="adoptVal" class="slider-val">50%/yr</span></label>
+              <input type="range" id="adoptSlider" min="5" max="100" value="50" step="5"/>
+              <div class="slider-desc">Rate at which MIT's 82% headroom is drawn down annually</div>
+            </div>
+
+            <div class="slider-group">
+              <label>Policy Response Strength <span id="policyVal" class="slider-val">30%</span></label>
+              <input type="range" id="policySlider" min="0" max="100" value="30" step="5"/>
+              <div class="slider-desc">Adequacy of reskilling, disclosure &amp; early-career protection (0=none, 100=full)</div>
+            </div>
+
+            <div class="slider-group">
+              <label>Augmentation Adoption Rate <span id="augVal" class="slider-val">50%</span></label>
+              <input type="range" id="augSlider" min="17" max="100" value="50" step="1"/>
+              <div class="slider-desc">% of AI-productive firms that choose augmentation over displacement (EY baseline: 83%)</div>
+            </div>
+
+            <div class="slider-group">
+              <label>Early-Career Protection <span id="earlyVal" class="slider-val">10%</span></label>
+              <input type="range" id="earlySlider" min="0" max="100" value="10" step="5"/>
+              <div class="slider-desc">Policy coverage for ages 22–25 in high-AI-exposure roles</div>
+            </div>
+
+            <div class="sim-scenario-btns">
+              <button class="scenario-btn" id="scenBusiness">Business as Usual</button>
+              <button class="scenario-btn" id="scenOptimist">Optimist</button>
+              <button class="scenario-btn" id="scenPessimist">Pessimist</button>
+              <button class="scenario-btn" id="scenPolicy">Full Policy</button>
+            </div>
+          </div>
+
+          <div class="card sim-output">
+            <h3 class="card-title">Projected Outcomes (2026–2030)</h3>
+            <div style="height: 300px; position: relative;">
+              <canvas id="chartSim"></canvas>
+            </div>
+            <div class="sim-kpis" id="simKPIs">
+              <div class="sim-kpi"><div class="sk-val" id="skDisplaced">—</div><div class="sk-lbl">Cumulative Displaced</div></div>
+              <div class="sim-kpi"><div class="sk-val" id="skCreated">—</div><div class="sk-lbl">New Roles Created</div></div>
+              <div class="sim-kpi"><div class="sk-val" id="skNet">—</div><div class="sk-lbl">Net Employment Impact</div></div>
+              <div class="sim-kpi"><div class="sk-val" id="skEarlyCareer">—</div><div class="sk-lbl">Early-Career Jobs at Risk</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <strong>The Dual Paradox: AI Investment &amp; Workforce Displacement (2024–2026)</strong><br/>
+          <small>Research implemented across 6 Research Questions · 5 Objectives · 3 Analytical Layers · 14 Data Sources</small>
+        </div>
+        <div class="footer-right">
+          <span class="footer-source">Challenger, Gray &amp; Christmas · MIT Project Iceberg · Stanford DEL · Goldman Sachs · J.P. Morgan · WEF · NBER · LSE · EY · Anthropic</span>
         </div>
       </div>
-      <div class="gauge-msg">82% displacement headroom remains — the bulk of structural AI displacement is still ahead.</div>
-    </div>
-    <div class="card">
-      <h3 class="card-title">AI Attribution Growth Trend</h3>
-      <p class="card-sub">AI-attributed layoffs vs. total U.S. layoffs (2023–2025)</p>
-      <canvas id="chartMacroTrend" height="220"></canvas>
-    </div>
+    </footer>
+    
   </div>
-
-  <!-- REGRESSION TABLES -->
-  <div class="card wide">
-    <h3 class="card-title">Panel Regression Results — RQ1: Does AI CapEx Cause Layoffs?</h3>
-    <p class="card-sub">Dependent variable: layoff_rate (% workforce). HC1 Robust standard errors.</p>
-    <div class="reg-table-wrap">
-      <table class="reg-table" id="regTable">
-        <thead>
-          <tr>
-            <th>Variable</th>
-            <th>Model 1<br><small>Pooled OLS</small></th>
-            <th>Model 2<br><small>Entity FE</small></th>
-            <th>Model 3<br><small>Two-Way FE</small></th>
-          </tr>
-        </thead>
-        <tbody id="regTableBody">
-          <tr><td>ai_capex_ratio</td><td class="sig2">0.1570**<br><small>(0.0631)</small></td><td class="sig2">0.1135**<br><small>(0.0537)</small></td><td class="sig1">0.1029*<br><small>(0.0582)</small></td></tr>
-          <tr><td>revenue_growth</td><td>0.0011<br><small>(0.0008)</small></td><td>0.0009<br><small>(0.0006)</small></td><td>0.0006<br><small>(0.0007)</small></td></tr>
-          <tr><td>pandemic_hiring</td><td class="sig3">0.0043***<br><small>(0.0009)</small></td><td>—</td><td>—</td></tr>
-          <tr><td>ai_exposure</td><td class="sig3">0.0121***<br><small>(0.0031)</small></td><td>—</td><td>—</td></tr>
-          <tr class="table-divider"><td>Entity FE</td><td>No</td><td>Yes</td><td>Yes</td></tr>
-          <tr><td>Time FE</td><td>No</td><td>No</td><td>Yes</td></tr>
-          <tr><td>N</td><td>108</td><td>108</td><td>108</td></tr>
-          <tr><td>R²</td><td>0.218</td><td>0.312</td><td>0.401</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-note">* p&lt;0.10 &nbsp;** p&lt;0.05 &nbsp;*** p&lt;0.001 &nbsp;|&nbsp; HC1 Robust SE in parentheses</p>
-    <div class="interpretation-box">
-      <strong>Interpretation (RQ1):</strong> A 10 percentage-point increase in AI capital expenditure share raises the quarterly layoff rate by approximately <strong>1.1–1.6 percentage points</strong>, statistically significant at 5% across all three specifications. This confirms that AI investment is a genuine causal driver — not merely a narrative overlay.
-    </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <h3 class="card-title">AI-Washing Split Regression</h3>
-      <p class="card-sub">Class A/B (genuine) vs Class C (washed) firms</p>
-      <div class="split-reg-grid">
-        <div class="split-reg-item green">
-          <div class="split-title">Class A/B Genuine</div>
-          <div class="split-coef">β = 0.1135</div>
-          <div class="split-p">p = 0.0345 <span class="sig-star">**</span></div>
-          <div class="split-n">N = 90 obs</div>
-          <div class="split-verdict">✅ SIGNIFICANT — AI CapEx predicts layoffs</div>
-        </div>
-        <div class="split-reg-item red">
-          <div class="split-title">Class C AI-Washed</div>
-          <div class="split-coef">β = 0.4069</div>
-          <div class="split-p">p = 0.2295 <span>n.s.</span></div>
-          <div class="split-n">N = 18 obs</div>
-          <div class="split-verdict">❌ NOT SIGNIFICANT — AI is a narrative, not a cause</div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <h3 class="card-title">Macro Quantification (RQ2)</h3>
-      <p class="card-sub">Scale and proportion of AI-driven displacement</p>
-      <div class="stat-list" id="macroStatList">
-        <div class="stat-row"><span class="stat-lbl">AI % of Total Layoffs (2025)</span><span class="stat-val">4.7%</span></div>
-        <div class="stat-row"><span class="stat-lbl">YoY Growth in AI-Cited Cuts</span><span class="stat-val highlight">+1,100%</span></div>
-        <div class="stat-row"><span class="stat-lbl">% of MIT Feasibility Ceiling Realised</span><span class="stat-val">18%</span></div>
-        <div class="stat-row"><span class="stat-lbl">Remaining Displacement Headroom</span><span class="stat-val warn">82%</span></div>
-        <div class="stat-row"><span class="stat-lbl">Goldman Annual AI Job Loss</span><span class="stat-val">192,000</span></div>
-        <div class="stat-row"><span class="stat-lbl">WEF 2030 Net Job Creation</span><span class="stat-val green">+78M</span></div>
-        <div class="stat-row"><span class="stat-lbl">AI-Washed Range (LSE)</span><span class="stat-val warn">8,250–13,750 cuts</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  TAB 3 — LAYER 2 FIRM CASE STUDIES                                  -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="tab-panel" id="tab-layer2">
-  <div class="section-header">
-    <h2>Layer 2 — Firm-Level Case Study Analysis</h2>
-    <p>12 corporations scored across 4 evidence dimensions. AI-Washing classification protocol (§6.4). RQ5 sectoral correlation.</p>
-  </div>
-
-  <!-- CLASSIFICATION GRID -->
-  <div class="card wide">
-    <h3 class="card-title">AI-Washing Evidence Scoring Matrix (§6.4)</h3>
-    <p class="card-sub">Total evidence score out of 100. ≥65 = Genuine (Class A/B). &lt;40 = AI-Washed (Class C).</p>
-    <div class="firm-cards" id="firmCardGrid"></div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <h3 class="card-title">Timing Analysis — Layoff vs AI Announcement</h3>
-      <p class="card-sub">Lag in quarters between AI investment announcement and layoff peak</p>
-      <canvas id="chartTiming" height="240"></canvas>
-    </div>
-    <div class="card">
-      <h3 class="card-title">Augmentation vs. Displacement Strategy</h3>
-      <p class="card-sub">Strategic choice typology across 12 firms (Objective 4)</p>
-      <canvas id="chartStrategy" height="240"></canvas>
-    </div>
-  </div>
-
-  <div class="card wide">
-    <h3 class="card-title">Case Study Detail — Corporate Evidence Ratings</h3>
-    <div class="case-table-wrap">
-      <table class="case-table" id="caseTable">
-        <thead>
-          <tr>
-            <th>Company</th><th>Layoffs</th><th>AI Investment</th>
-            <th>Timing Prox.</th><th>Specificity</th><th>Post-Hire Signal</th><th>Inv.Pandemic</th>
-            <th>Total /100</th><th>Class</th>
-          </tr>
-        </thead>
-        <tbody id="caseTableBody"></tbody>
-      </table>
-    </div>
-    <p class="table-note">Timing proximity (0–30) · Specificity of AI causality (0–25) · Post-layoff AI hiring signal (0–25) · Inverse pandemic-hiring overhang (0–20)</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  TAB 4 — LAYER 3 COHORT                                             -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="tab-panel" id="tab-layer3">
-  <div class="section-header">
-    <h2>Layer 3 — Demographic Cohort Analysis</h2>
-    <p>Difference-in-Differences across 30 occupations · 4 years. RQ3: Who bears the greatest AI displacement risk?</p>
-  </div>
-
-  <div class="three-col">
-    <div class="kpi-card accent-red">
-      <div class="kpi-icon">📉</div>
-      <div class="kpi-value">−0.69 pp</div>
-      <div class="kpi-label">DiD Estimate (Raw)</div>
-      <div class="kpi-sub">High-exposure cohort vs control, post-2022</div>
-    </div>
-    <div class="kpi-card accent-orange">
-      <div class="kpi-icon">🎓</div>
-      <div class="kpi-value">13–16%</div>
-      <div class="kpi-label">Relative Employment Decline</div>
-      <div class="kpi-sub">Ages 22–25 in AI-exposed roles (Stanford / JPM)</div>
-    </div>
-    <div class="kpi-card accent-purple">
-      <div class="kpi-icon">📈</div>
-      <div class="kpi-value">R² = 0.83</div>
-      <div class="kpi-label">Double-Robust DiD Model Fit</div>
-      <div class="kpi-sub">Occ FE + Year FE, N=120</div>
-    </div>
-  </div>
-
-  <!-- DiD REGRESSION TABLE -->
-  <div class="two-col">
-    <div class="card">
-      <h3 class="card-title">DiD Regression Results — RQ3</h3>
-      <p class="card-sub">Dep. variable: early_career_share. Standard &amp; Double-Robust specifications.</p>
-      <div class="reg-table-wrap">
-        <table class="reg-table">
-          <thead>
-            <tr><th>Variable</th><th>Model 4<br><small>Standard DiD</small></th><th>Model 5<br><small>Double-Robust</small></th></tr>
-          </thead>
-          <tbody>
-            <tr><td>post_2022</td><td class="sig3">−0.0024***<br><small>(0.0007)</small></td><td>—</td></tr>
-            <tr><td>exposure_treatment</td><td>0.0001<br><small>(0.0011)</small></td><td>—</td></tr>
-            <tr><td><strong>DiD (post × treated)</strong></td><td class="sig3"><strong>−0.0069***</strong><br><small>(0.0014)</small></td><td class="sig3"><strong>0.1851***</strong><br><small>(0.0237)</small></td></tr>
-            <tr><td>avg_wage</td><td>−0.0000<br><small>(0.0000)</small></td><td>—</td></tr>
-            <tr class="table-divider"><td>Occupation FE</td><td>No</td><td>Yes</td></tr>
-            <tr><td>Year FE</td><td>No</td><td>Yes</td></tr>
-            <tr><td>N</td><td>120</td><td>120</td></tr>
-            <tr><td>R²</td><td>0.5718</td><td>0.8312</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="table-note">*** p&lt;0.001 | HC1 Robust SE in parentheses</p>
-    </div>
-    <div class="card">
-      <h3 class="card-title">Anthropic Elasticity Model</h3>
-      <p class="card-sub">Growth rate reduction per 10pp AI task coverage increase (Anthropic, March 2026)</p>
-      <canvas id="chartElasticity" height="250"></canvas>
-    </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <h3 class="card-title">Multi-Source Triangulation — RQ3</h3>
-      <p class="card-sub">Relative employment decline for early-career workers across 4 independent data sources</p>
-      <canvas id="chartCohortTriangle" height="250"></canvas>
-    </div>
-    <div class="card">
-      <h3 class="card-title">Group Mean Employment Trends (DiD)</h3>
-      <p class="card-sub">Pre- vs. Post-2022 early career share by exposure group</p>
-      <canvas id="chartDiDMeans" height="250"></canvas>
-    </div>
-  </div>
-
-  <!-- Goldman Sachs Sector Exposure -->
-  <div class="card wide">
-    <h3 class="card-title">AI Task Exposure by Sector — Goldman Sachs (2025)</h3>
-    <p class="card-sub">Proportion of tasks exposed to AI automation — key career entry sectors</p>
-    <div class="exposure-bars" id="exposureBars"></div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  TAB 5 — RQ5 INVESTMENT PARADOX                                     -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="tab-panel" id="tab-rq5">
-  <div class="section-header">
-    <h2>RQ5 — The Investment Paradox</h2>
-    <p>Is there a measurable correlation between AI investment scale and concurrent workforce reductions? Does it vary by sector?</p>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <h3 class="card-title">AI Investment vs. Total Layoffs — Scatter (12 Firms)</h3>
-      <p class="card-sub">Pearson r = 0.78 — strong positive correlation confirmed</p>
-      <canvas id="chartScatter" height="300"></canvas>
-    </div>
-    <div class="card">
-      <h3 class="card-title">Sectoral Correlation Heatmap</h3>
-      <p class="card-sub">AI CapEx ratio ↔ Layoff rate correlation by sector</p>
-      <canvas id="chartSectorHeat" height="300"></canvas>
-    </div>
-  </div>
-
-  <div class="card wide">
-    <h3 class="card-title">Sector Portfolio: Total AI Investment vs. Total Layoffs</h3>
-    <div class="case-table-wrap">
-      <table class="case-table" id="sectorTable">
-        <thead>
-          <tr><th>Sector</th><th>Total AI Investment ($M)</th><th>Total Layoffs</th><th>Avg CapEx Ratio</th><th>Avg Layoff Rate</th><th>Correlation</th></tr>
-        </thead>
-        <tbody id="sectorTableBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="interpretation-box wide-interp">
-    <strong>RQ5 Finding:</strong> The Pearson correlation between total AI investment and total layoffs across the 12-firm panel is <strong>r = 0.78</strong>, confirming the "Investment Paradox" — firms that invest most in AI also cut the most workers. However, sector-level analysis reveals significant heterogeneity: Enterprise Software (r ≈ 0.81) and Logistics (r ≈ 0.75) show stronger links than Media/Advertising (r ≈ 0.22), where AI-washing is more prevalent. This is consistent with RQ1's finding that genuine AI restructuring (Class A/B) drives measurable displacement, while narrative-driven AI-washing (Class C) inflates correlation noise.
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  TAB 6 — RQ6 EQUILIBRIUM                                            -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="tab-panel" id="tab-rq6">
-  <div class="section-header">
-    <h2>RQ6 — Long-Term Equilibrium</h2>
-    <p>Are current AI-driven layoff patterns a cyclical correction or a permanent structural shift? Structural break analysis &amp; WEF 2030 projection modelling.</p>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <h3 class="card-title">Layoff Attribution Decomposition</h3>
-      <p class="card-sub">2025 U.S. layoffs (1.17M) broken down by primary causal driver</p>
-      <canvas id="chartDecomp" height="300"></canvas>
-    </div>
-    <div class="card">
-      <h3 class="card-title">WEF 2030 Job Transition Model</h3>
-      <p class="card-sub">Projected job displacement vs. creation — net outcome and transition cost</p>
-      <canvas id="chartWEF" height="300"></canvas>
-    </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <h3 class="card-title">Structural Break Analysis</h3>
-      <p class="card-sub">Chow-style slope comparison: Pre vs. Post-2025Q4</p>
-      <div class="break-analysis">
-        <div class="break-stat">
-          <div class="break-label">Pre-Break Slope (2024Q1–2025Q3)</div>
-          <div class="break-val">+4,551 jobs/qtr</div>
-          <div class="break-sub">Accelerating but bounded</div>
-        </div>
-        <div class="break-arrow">→</div>
-        <div class="break-stat highlight-break">
-          <div class="break-label">Post-Break Slope (2025Q4–2026Q1)</div>
-          <div class="break-val">+1,587 jobs/qtr</div>
-          <div class="break-sub">Deceleration suggests cyclical correction</div>
-        </div>
-      </div>
-      <div class="break-verdict">
-        <span class="verdict-icon">📊</span>
-        <div>Slope multiplier = <strong>0.35×</strong> — post-break acceleration does not exceed 2× threshold. Pattern is <strong>more cyclical than structural</strong> within the current observation window. However, MIT's 82% displacement headroom signals substantial structural risk ahead.
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <h3 class="card-title">Goldman Sachs Monthly Job Loss Projection</h3>
-      <p class="card-sub">Annualised AI-driven employment reduction trajectory</p>
-      <canvas id="chartGoldman" height="250"></canvas>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  TAB 7 — POLICY GAPS                                                -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="tab-panel" id="tab-policy">
-  <div class="section-header">
-    <h2>Objective 5 — Policy Gaps &amp; Recommendations</h2>
-    <p>Current framework adequacy scores and evidence-based recommendations (§8.4). RQ4.</p>
-  </div>
-
-  <div class="policy-grid" id="policyGrid"></div>
-
-  <div class="card wide">
-    <h3 class="card-title">Policy Adequacy Radar</h3>
-    <p class="card-sub">Current vs. required adequacy across 5 critical policy domains</p>
-    <canvas id="chartRadar" height="380"></canvas>
-  </div>
-
-  <div class="card wide">
-    <h3 class="card-title">Evidence-Based Policy Recommendations</h3>
-    <div class="reco-grid">
-      <div class="reco-card critical">
-        <div class="reco-priority">🔴 CRITICAL</div>
-        <h4>Mandatory AI Disclosure in Restructuring</h4>
-        <p>SEC and labour ministry filings must include standardised AI causality evidence requirements for any restructuring citing AI as a driver. Eliminates AI-washing loophole.</p>
-        <div class="reco-target">Target: 0% → 80% Adequacy</div>
-      </div>
-      <div class="reco-card critical">
-        <div class="reco-priority">🔴 CRITICAL</div>
-        <h4>Early-Career Entry Point Protection</h4>
-        <p>New policy framework specifically for ages 22–25 in high-AI-exposure sectors: targeted subsidies, AI-native apprenticeships, university pipeline partnerships.</p>
-        <div class="reco-target">Target: 5% → 70% Adequacy</div>
-      </div>
-      <div class="reco-card critical">
-        <div class="reco-priority">🔴 CRITICAL</div>
-        <h4>AI-Washing Detection &amp; Enforcement</h4>
-        <p>Independent audit body to verify AI causality claims in corporate restructuring filings, with penalties for misrepresentation. Aligns with LSE findings.</p>
-        <div class="reco-target">Target: 0% → 75% Adequacy</div>
-      </div>
-      <div class="reco-card high">
-        <div class="reco-priority">🟠 HIGH</div>
-        <h4>Scaled Reskilling Infrastructure</h4>
-        <p>48% of employees identify training as most critical AI adoption factor. Government programs must reach 10× current scale. EY: augmentation firms outperform displacement firms.</p>
-        <div class="reco-target">Target: 35% → 80% Adequacy</div>
-      </div>
-      <div class="reco-card high">
-        <div class="reco-priority">🟠 HIGH</div>
-        <h4>G20 AI Employment Coordination Framework</h4>
-        <p>AI restructuring is global; policy responses remain national. An international coordination mechanism is urgently needed before 2027 when MIT headroom begins to close.</p>
-        <div class="reco-target">Target: 10% → 60% Adequacy</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  TAB 8 — SIMULATOR                                                  -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="tab-panel" id="tab-simulator">
-  <div class="section-header">
-    <h2>Interactive AI Displacement Simulator</h2>
-    <p>Adjust parameters to model future AI-driven job displacement under different adoption speeds and policy responses (RQ6 scenario modelling).</p>
-  </div>
-
-  <div class="sim-grid">
-    <div class="card sim-controls">
-      <h3 class="card-title">Simulation Parameters</h3>
-
-      <div class="slider-group">
-        <label>AI Adoption Speed <span id="adoptVal" class="slider-val">50%/yr</span></label>
-        <input type="range" id="adoptSlider" min="5" max="100" value="50" step="5"/>
-        <div class="slider-desc">Rate at which MIT's 82% headroom is drawn down annually</div>
-      </div>
-
-      <div class="slider-group">
-        <label>Policy Response Strength <span id="policyVal" class="slider-val">30%</span></label>
-        <input type="range" id="policySlider" min="0" max="100" value="30" step="5"/>
-        <div class="slider-desc">Adequacy of reskilling, disclosure &amp; early-career protection (0=none, 100=full)</div>
-      </div>
-
-      <div class="slider-group">
-        <label>Augmentation Adoption Rate <span id="augVal" class="slider-val">50%</span></label>
-        <input type="range" id="augSlider" min="17" max="100" value="50" step="1"/>
-        <div class="slider-desc">% of AI-productive firms that choose augmentation over displacement (EY baseline: 83%)</div>
-      </div>
-
-      <div class="slider-group">
-        <label>Early-Career Protection <span id="earlyVal" class="slider-val">10%</span></label>
-        <input type="range" id="earlySlider" min="0" max="100" value="10" step="5"/>
-        <div class="slider-desc">Policy coverage for ages 22–25 in high-AI-exposure roles</div>
-      </div>
-
-      <div class="sim-scenario-btns">
-        <button class="scenario-btn" id="scenBusiness">Business as Usual</button>
-        <button class="scenario-btn" id="scenOptimist">Optimist</button>
-        <button class="scenario-btn" id="scenPessimist">Pessimist</button>
-        <button class="scenario-btn" id="scenPolicy">Full Policy</button>
-      </div>
-    </div>
-
-    <div class="card sim-output">
-      <h3 class="card-title">Projected Outcomes (2026–2030)</h3>
-      <canvas id="chartSim" height="300"></canvas>
-      <div class="sim-kpis" id="simKPIs">
-        <div class="sim-kpi"><div class="sk-val" id="skDisplaced">—</div><div class="sk-lbl">Cumulative Displaced</div></div>
-        <div class="sim-kpi"><div class="sk-val" id="skCreated">—</div><div class="sk-lbl">New Roles Created</div></div>
-        <div class="sim-kpi"><div class="sk-val" id="skNet">—</div><div class="sk-lbl">Net Employment Impact</div></div>
-        <div class="sim-kpi"><div class="sk-val" id="skEarlyCareer">—</div><div class="sk-lbl">Early-Career Jobs at Risk</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-left">
-      <strong>The Dual Paradox: AI Investment &amp; Workforce Displacement (2024–2026)</strong><br/>
-      <small>Research implemented across 6 Research Questions · 5 Objectives · 3 Analytical Layers · 14 Data Sources</small>
-    </div>
-    <div class="footer-right">
-      <span class="footer-source">Challenger, Gray &amp; Christmas · MIT Project Iceberg · Stanford DEL · Goldman Sachs · J.P. Morgan · WEF · NBER · LSE · EY · Anthropic</span>
-    </div>
-  </div>
-</footer>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="app.js"></script>
