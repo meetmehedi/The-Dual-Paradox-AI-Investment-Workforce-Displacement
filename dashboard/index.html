@@ -7,6 +7,8 @@
 <meta name="description" content="Interactive research dashboard: The Dual Paradox — AI Investment & Workforce Displacement (2024–2026). Six research questions, three analytical layers, 14 data sources."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
 <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -18,58 +20,62 @@
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-header">
     <div class="sidebar-logo">
-      <div class="logo-icon">⚡</div>
+      <div class="logo-icon">
+        <i data-lucide="zap" class="logo-icon-svg"></i>
+      </div>
       <div class="logo-text">
         <div class="logo-title">The Dual Paradox</div>
         <div class="logo-sub">AI Research Portal</div>
       </div>
     </div>
-    <button class="sidebar-close" onclick="closeMobileMenu()" aria-label="Close menu">✕</button>
+    <button class="sidebar-close" onclick="closeMobileMenu()" aria-label="Close menu">
+      <i data-lucide="x"></i>
+    </button>
   </div>
 
   <nav class="sidebar-nav">
     <div class="nav-section-label">Research Layers</div>
     <button class="nav-btn active" data-tab="overview" id="btn-overview" onclick="switchTab('overview')">
-      <span class="nav-icon">🏠</span>
+      <i data-lucide="home" class="nav-icon"></i>
       <span class="nav-label">Overview</span>
       <span class="nav-badge">Key Findings</span>
     </button>
     <button class="nav-btn" data-tab="layer1" id="btn-layer1" onclick="switchTab('layer1')">
-      <span class="nav-icon">📊</span>
+      <i data-lucide="bar-chart-2" class="nav-icon"></i>
       <span class="nav-label">Layer 1 · Macro</span>
       <span class="nav-badge">Panel Regressions</span>
     </button>
     <button class="nav-btn" data-tab="layer2" id="btn-layer2" onclick="switchTab('layer2')">
-      <span class="nav-icon">🏢</span>
+      <i data-lucide="building-2" class="nav-icon"></i>
       <span class="nav-label">Layer 2 · Firms</span>
       <span class="nav-badge">12 Case Studies</span>
     </button>
     <button class="nav-btn" data-tab="layer3" id="btn-layer3" onclick="switchTab('layer3')">
-      <span class="nav-icon">👥</span>
+      <i data-lucide="users" class="nav-icon"></i>
       <span class="nav-label">Layer 3 · Cohorts</span>
       <span class="nav-badge">DiD Analysis</span>
     </button>
     
     <div class="nav-section-label">Research Questions</div>
     <button class="nav-btn" data-tab="rq5" id="btn-rq5" onclick="switchTab('rq5')">
-      <span class="nav-icon">💹</span>
+      <i data-lucide="trending-up" class="nav-icon"></i>
       <span class="nav-label">RQ5 · Paradox</span>
       <span class="nav-badge">Investment Correlation</span>
     </button>
     <button class="nav-btn" data-tab="rq6" id="btn-rq6" onclick="switchTab('rq6')">
-      <span class="nav-icon">🔭</span>
+      <i data-lucide="scale" class="nav-icon"></i>
       <span class="nav-label">RQ6 · Equilibrium</span>
       <span class="nav-badge">Long-Term Outlook</span>
     </button>
     
     <div class="nav-section-label">Policy & Tools</div>
     <button class="nav-btn" data-tab="policy" id="btn-policy" onclick="switchTab('policy')">
-      <span class="nav-icon">⚖️</span>
+      <i data-lucide="shield-alert" class="nav-icon"></i>
       <span class="nav-label">Policy Gaps</span>
       <span class="nav-badge">5 Critical Areas</span>
     </button>
     <button class="nav-btn" data-tab="simulator" id="btn-simulator" onclick="switchTab('simulator')">
-      <span class="nav-icon">🎮</span>
+      <i data-lucide="sliders" class="nav-icon"></i>
       <span class="nav-label">Simulator</span>
       <span class="nav-badge">Interactive Model</span>
     </button>
@@ -91,7 +97,7 @@
   <!-- TOP BAR -->
   <header class="topbar">
     <button class="hamburger" id="hamburger" onclick="openMobileMenu()" aria-label="Open navigation">
-      <span></span><span></span><span></span>
+      <i data-lucide="menu"></i>
     </button>
     <div class="topbar-title">
       <span id="currentTabTitle">Overview</span>
@@ -149,60 +155,7 @@
     <p class="section-sub">Real-time metrics from 14 cross-validated data sources</p>
   </div>
   <div class="kpi-grid" id="kpiGrid">
-    <div class="kpi-card accent-blue">
-      <div class="kpi-header">
-        <div class="kpi-icon-wrap blue"><span>📊</span></div>
-        <div class="kpi-trend up">↑</div>
-      </div>
-      <div class="kpi-value" data-count="1170000" data-format="comma">0</div>
-      <div class="kpi-label">Total U.S. Layoffs 2025</div>
-      <div class="kpi-sub">Highest since pandemic (2020)</div>
-    </div>
-    <div class="kpi-card accent-orange">
-      <div class="kpi-header">
-        <div class="kpi-icon-wrap orange"><span>🤖</span></div>
-        <div class="kpi-trend up">↑</div>
-      </div>
-      <div class="kpi-value" data-count="55000" data-format="comma">0</div>
-      <div class="kpi-label">AI-Attributed Layoffs</div>
-      <div class="kpi-sub">+1,100% year-on-year</div>
-    </div>
-    <div class="kpi-card accent-purple">
-      <div class="kpi-header">
-        <div class="kpi-icon-wrap purple"><span>🔬</span></div>
-        <div class="kpi-trend neutral">→</div>
-      </div>
-      <div class="kpi-value" data-count="4.7" data-format="pct">0</div>
-      <div class="kpi-label">AI Share of Total Cuts</div>
-      <div class="kpi-sub">Per Challenger, Gray &amp; Christmas</div>
-    </div>
-    <div class="kpi-card accent-amber">
-      <div class="kpi-header">
-        <div class="kpi-icon-wrap amber"><span>⚠️</span></div>
-        <div class="kpi-trend up">↑</div>
-      </div>
-      <div class="kpi-value" data-count="82" data-format="pct">0</div>
-      <div class="kpi-label">Displacement Headroom</div>
-      <div class="kpi-sub">MIT Project Iceberg feasibility gap</div>
-    </div>
-    <div class="kpi-card accent-red">
-      <div class="kpi-header">
-        <div class="kpi-icon-wrap red"><span>📉</span></div>
-        <div class="kpi-trend down">↓</div>
-      </div>
-      <div class="kpi-value" data-count="13" data-format="pct">0</div>
-      <div class="kpi-label">Early-Career Emp. Drop</div>
-      <div class="kpi-sub">Ages 22–25 in AI-exposed roles</div>
-    </div>
-    <div class="kpi-card accent-teal">
-      <div class="kpi-header">
-        <div class="kpi-icon-wrap teal"><span>✅</span></div>
-        <div class="kpi-trend neutral">→</div>
-      </div>
-      <div class="kpi-value" data-count="83" data-format="pct">0</div>
-      <div class="kpi-label">AI Firms Kept Headcount</div>
-      <div class="kpi-sub">EY Dec 2025 — Augmentation won</div>
-    </div>
+    <!-- Populated Dynamically by app.js -->
   </div>
 
   <!-- FINDINGS -->
@@ -260,7 +213,9 @@
         <h3 class="card-title">2025 Layoff Attribution</h3>
         <p class="card-sub">1.17M total cuts — decomposed by primary driver</p>
       </div>
-      <canvas id="donutAttribution" height="260"></canvas>
+      <div class="chart-container">
+        <canvas id="donutAttribution"></canvas>
+      </div>
     </div>
     <div class="card">
       <div class="card-header">
@@ -327,7 +282,9 @@
         <h3 class="card-title">AI Attribution Growth Trend</h3>
         <p class="card-sub">AI-attributed layoffs vs. total U.S. layoffs (2023–2025)</p>
       </div>
-      <canvas id="chartMacroTrend" height="240"></canvas>
+      <div class="chart-container">
+        <canvas id="chartMacroTrend"></canvas>
+      </div>
     </div>
   </div>
 
@@ -433,14 +390,18 @@
         <h3 class="card-title">Timing Analysis</h3>
         <p class="card-sub">Lag in quarters between AI investment announcement and layoff peak</p>
       </div>
-      <canvas id="chartTiming" height="240"></canvas>
+      <div class="chart-container">
+        <canvas id="chartTiming"></canvas>
+      </div>
     </div>
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Augmentation vs. Displacement</h3>
         <p class="card-sub">Strategic choice typology across 12 firms (Objective 4)</p>
       </div>
-      <canvas id="chartStrategy" height="240"></canvas>
+      <div class="chart-container">
+        <canvas id="chartStrategy"></canvas>
+      </div>
     </div>
   </div>
 
@@ -475,19 +436,25 @@
 
   <div class="three-col">
     <div class="kpi-card accent-red">
-      <div class="kpi-header"><div class="kpi-icon-wrap red"><span>📉</span></div></div>
+      <div class="kpi-header">
+        <div class="kpi-icon-wrap red"><i data-lucide="trending-down" class="kpi-icon"></i></div>
+      </div>
       <div class="kpi-value">−0.69 pp</div>
       <div class="kpi-label">DiD Estimate (Raw)</div>
       <div class="kpi-sub">High-exposure cohort vs control, post-2022</div>
     </div>
     <div class="kpi-card accent-orange">
-      <div class="kpi-header"><div class="kpi-icon-wrap orange"><span>🎓</span></div></div>
+      <div class="kpi-header">
+        <div class="kpi-icon-wrap orange"><i data-lucide="graduation-cap" class="kpi-icon"></i></div>
+      </div>
       <div class="kpi-value">13–16%</div>
       <div class="kpi-label">Relative Employment Decline</div>
       <div class="kpi-sub">Ages 22–25 in AI-exposed roles (Stanford / JPM)</div>
     </div>
     <div class="kpi-card accent-purple">
-      <div class="kpi-header"><div class="kpi-icon-wrap purple"><span>📈</span></div></div>
+      <div class="kpi-header">
+        <div class="kpi-icon-wrap purple"><i data-lucide="activity" class="kpi-icon"></i></div>
+      </div>
       <div class="kpi-value">R² = 0.83</div>
       <div class="kpi-label">Double-Robust DiD Model Fit</div>
       <div class="kpi-sub">Occ FE + Year FE, N=120</div>
@@ -524,7 +491,9 @@
         <h3 class="card-title">Anthropic Elasticity Model</h3>
         <p class="card-sub">Growth rate reduction per 10pp AI task coverage increase (Anthropic, March 2026)</p>
       </div>
-      <canvas id="chartElasticity" height="250"></canvas>
+      <div class="chart-container">
+        <canvas id="chartElasticity"></canvas>
+      </div>
     </div>
   </div>
 
@@ -534,14 +503,18 @@
         <h3 class="card-title">Multi-Source Triangulation — RQ3</h3>
         <p class="card-sub">Relative employment decline for early-career workers across 4 independent data sources</p>
       </div>
-      <canvas id="chartCohortTriangle" height="250"></canvas>
+      <div class="chart-container">
+        <canvas id="chartCohortTriangle"></canvas>
+      </div>
     </div>
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Group Mean Employment Trends (DiD)</h3>
         <p class="card-sub">Pre- vs. Post-2022 early career share by exposure group</p>
       </div>
-      <canvas id="chartDiDMeans" height="250"></canvas>
+      <div class="chart-container">
+        <canvas id="chartDiDMeans"></canvas>
+      </div>
     </div>
   </div>
 
@@ -576,14 +549,18 @@
         <h3 class="card-title">AI Investment vs. Total Layoffs</h3>
         <p class="card-sub">Scatter plot across 12 firms — Pearson r = 0.78 confirmed</p>
       </div>
-      <canvas id="chartScatter" height="300"></canvas>
+      <div class="chart-container" style="height: 320px;">
+        <canvas id="chartScatter"></canvas>
+      </div>
     </div>
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Sectoral Correlation</h3>
         <p class="card-sub">AI CapEx ratio ↔ Layoff rate correlation by sector</p>
       </div>
-      <canvas id="chartSectorHeat" height="300"></canvas>
+      <div class="chart-container" style="height: 320px;">
+        <canvas id="chartSectorHeat"></canvas>
+      </div>
     </div>
   </div>
 
@@ -617,14 +594,18 @@
         <h3 class="card-title">Layoff Attribution Decomposition</h3>
         <p class="card-sub">2025 U.S. layoffs (1.17M) broken down by primary causal driver</p>
       </div>
-      <canvas id="chartDecomp" height="300"></canvas>
+      <div class="chart-container" style="height: 320px;">
+        <canvas id="chartDecomp"></canvas>
+      </div>
     </div>
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">WEF 2030 Job Transition Model</h3>
         <p class="card-sub">Projected job displacement vs. creation — net outcome and transition cost</p>
       </div>
-      <canvas id="chartWEF" height="300"></canvas>
+      <div class="chart-container" style="height: 320px;">
+        <canvas id="chartWEF"></canvas>
+      </div>
     </div>
   </div>
 
@@ -659,7 +640,9 @@
         <h3 class="card-title">Goldman Sachs Monthly Job Loss Projection</h3>
         <p class="card-sub">Annualised AI-driven employment reduction trajectory</p>
       </div>
-      <canvas id="chartGoldman" height="250"></canvas>
+      <div class="chart-container">
+        <canvas id="chartGoldman"></canvas>
+      </div>
     </div>
   </div>
 </section>
@@ -680,7 +663,9 @@
       <h3 class="card-title">Policy Adequacy Radar</h3>
       <p class="card-sub">Current vs. required adequacy across 5 critical policy domains</p>
     </div>
-    <canvas id="chartRadar" height="380"></canvas>
+    <div class="chart-container" style="height: 400px;">
+      <canvas id="chartRadar"></canvas>
+    </div>
   </div>
 
   <div class="card">
@@ -689,31 +674,46 @@
     </div>
     <div class="reco-grid">
       <div class="reco-card critical">
-        <div class="reco-priority">🔴 CRITICAL</div>
+        <div class="reco-header">
+          <i data-lucide="shield-alert" class="reco-icon"></i>
+          <span class="reco-priority">CRITICAL</span>
+        </div>
         <h4>Mandatory AI Disclosure in Restructuring</h4>
         <p>SEC and labour ministry filings must include standardised AI causality evidence requirements for any restructuring citing AI as a driver. Eliminates AI-washing loophole.</p>
         <div class="reco-target">Target: 0% → 80% Adequacy</div>
       </div>
       <div class="reco-card critical">
-        <div class="reco-priority">🔴 CRITICAL</div>
+        <div class="reco-header">
+          <i data-lucide="shield-alert" class="reco-icon"></i>
+          <span class="reco-priority">CRITICAL</span>
+        </div>
         <h4>Early-Career Entry Point Protection</h4>
         <p>New policy framework specifically for ages 22–25 in high-AI-exposure sectors: targeted subsidies, AI-native apprenticeships, university pipeline partnerships.</p>
         <div class="reco-target">Target: 5% → 70% Adequacy</div>
       </div>
       <div class="reco-card critical">
-        <div class="reco-priority">🔴 CRITICAL</div>
+        <div class="reco-header">
+          <i data-lucide="shield-alert" class="reco-icon"></i>
+          <span class="reco-priority">CRITICAL</span>
+        </div>
         <h4>AI-Washing Detection &amp; Enforcement</h4>
         <p>Independent audit body to verify AI causality claims in corporate restructuring filings, with penalties for misrepresentation. Aligns with LSE findings.</p>
         <div class="reco-target">Target: 0% → 75% Adequacy</div>
       </div>
       <div class="reco-card high">
-        <div class="reco-priority">🟠 HIGH</div>
+        <div class="reco-header">
+          <i data-lucide="alert-circle" class="reco-icon"></i>
+          <span class="reco-priority">HIGH</span>
+        </div>
         <h4>Scaled Reskilling Infrastructure</h4>
         <p>48% of employees identify training as most critical AI adoption factor. Government programs must reach 10× current scale. EY: augmentation firms outperform displacement firms.</p>
         <div class="reco-target">Target: 35% → 80% Adequacy</div>
       </div>
       <div class="reco-card high">
-        <div class="reco-priority">🟠 HIGH</div>
+        <div class="reco-header">
+          <i data-lucide="alert-circle" class="reco-icon"></i>
+          <span class="reco-priority">HIGH</span>
+        </div>
         <h4>G20 AI Employment Coordination Framework</h4>
         <p>AI restructuring is global; policy responses remain national. An international coordination mechanism is urgently needed before 2027 when MIT headroom begins to close.</p>
         <div class="reco-target">Target: 10% → 60% Adequacy</div>
@@ -800,25 +800,27 @@
         <h3 class="card-title">Projected Outcomes (2026–2030)</h3>
         <p class="card-sub">5-year simulation based on current parameters</p>
       </div>
-      <canvas id="chartSim" height="280"></canvas>
+      <div class="chart-container" style="height: 300px;">
+        <canvas id="chartSim"></canvas>
+      </div>
       <div class="sim-kpis" id="simKPIs">
-        <div class="sim-kpi">
-          <div class="sk-icon">📉</div>
+        <div class="sim-kpi displaced">
+          <div class="sk-icon"><i data-lucide="trending-down"></i></div>
           <div class="sk-val" id="skDisplaced">—</div>
           <div class="sk-lbl">Cumulative Displaced</div>
         </div>
-        <div class="sim-kpi">
-          <div class="sk-icon">📈</div>
+        <div class="sim-kpi created">
+          <div class="sk-icon"><i data-lucide="trending-up"></i></div>
           <div class="sk-val" id="skCreated">—</div>
           <div class="sk-lbl">New Roles Created</div>
         </div>
-        <div class="sim-kpi">
-          <div class="sk-icon">⚖️</div>
+        <div class="sim-kpi net">
+          <div class="sk-icon"><i data-lucide="activity"></i></div>
           <div class="sk-val" id="skNet">—</div>
           <div class="sk-lbl">Net Employment Impact</div>
         </div>
-        <div class="sim-kpi">
-          <div class="sk-icon">🎓</div>
+        <div class="sim-kpi early-career">
+          <div class="sk-icon"><i data-lucide="users"></i></div>
           <div class="sk-val" id="skEarlyCareer">—</div>
           <div class="sk-lbl">Early-Career Jobs at Risk</div>
         </div>
@@ -884,6 +886,10 @@ window.switchTab = function(tabId) {
   if (titleEl) titleEl.textContent = TAB_TITLES[tabId] || tabId;
   // Close mobile menu
   closeMobileMenu();
+  // Refresh Lucide icons in case
+  if (window.lucide) {
+    lucide.createIcons();
+  }
 };
 
 // Ticker rotation
@@ -896,6 +902,13 @@ function rotateTicker() {
 }
 rotateTicker();
 setInterval(rotateTicker, 3500);
+
+// Initialize Lucide icons on load
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+});
 </script>
 </body>
 </html>

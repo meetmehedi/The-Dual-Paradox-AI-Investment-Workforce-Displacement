@@ -51,6 +51,11 @@ function initDashboard() {
     bindScenario("scenOptimist", 40, 60, 83, 50);
     bindScenario("scenPessimist", 80, 10, 25, 5);
     bindScenario("scenPolicy", 50, 90, 85, 80);
+
+    // 4. Initialize Lucide icons
+    if (window.lucide) {
+        lucide.createIcons();
+    }
 }
 
 // 1. Switch Navigation Tabs
@@ -81,30 +86,48 @@ function renderStats() {
         "kpi-card accent-blue", 
         "kpi-card accent-orange", 
         "kpi-card accent-purple", 
-        "kpi-card accent-green", 
+        "kpi-card accent-amber", 
         "kpi-card accent-red", 
         "kpi-card accent-teal"
+    ];
+    const colors = ["blue", "orange", "purple", "amber", "red", "teal"];
+    const trends = [
+        '<div class="kpi-trend up">↑</div>',
+        '<div class="kpi-trend up">↑</div>',
+        '<div class="kpi-trend neutral">→</div>',
+        '<div class="kpi-trend up">↑</div>',
+        '<div class="kpi-trend down">↓</div>',
+        '<div class="kpi-trend neutral">→</div>'
     ];
     
     kpiGrid.innerHTML = appData.indicators.map((ind, idx) => `
         <div class="${classes[idx % classes.length]}">
-            <div class="kpi-icon">${getIconForIndicator(ind.id)}</div>
+            <div class="kpi-header">
+                <div class="kpi-icon-wrap ${colors[idx % colors.length]}">
+                    <i data-lucide="${getIconForIndicator(ind.id)}" class="kpi-icon"></i>
+                </div>
+                ${trends[idx % trends.length]}
+            </div>
             <div class="kpi-value">${ind.value}</div>
             <div class="kpi-label">${ind.label}</div>
             <div class="kpi-sub">${ind.change} — ${ind.source}</div>
         </div>
     `).join('');
+
+    if (window.lucide) {
+        lucide.createIcons();
+    }
 }
 
 function getIconForIndicator(id) {
     switch (id) {
-        case "total_layoffs": return "📊";
-        case "ai_attributed": return "🤖";
-        case "early_career_decline": return "📉";
-        case "displacement_capacity": return "⚠️";
-        case "reskilling_need": return "🔬";
-        case "net_jobs_2030": return "✅";
-        default: return "⚡";
+        case "total_layoffs": return "users";
+        case "ai_attributed": return "cpu";
+        case "early_career_decline": return "trending-down";
+        case "displacement_capacity": return "alert-triangle";
+        case "reskilling_need": return "graduation-cap";
+        case "net_jobs_2030": return "check-circle-2";
+        default: return "zap";
     }
 }
 
@@ -154,6 +177,12 @@ function populateResultsTables() {
         cardGrid.innerHTML = analysisResults.obj1_classification_scores.map(s => {
             const isGenuine = parseFloat(s.Total_Score) >= 65;
             const badgeClass = isGenuine ? "b-indirect" : "c-washed";
+            const badgeLabel = isGenuine ? "Genuine" : "Washed";
+
+            // Find matching company details from research_data
+            const compObj = appData?.companies?.find(c => c.company.toLowerCase() === s.Company.toLowerCase() || c.company.toLowerCase().includes(s.Company.toLowerCase()));
+            const summary = compObj ? compObj.summary : "";
+
             return `
                 <div class="company-card">
                     <div class="company-card-header">
@@ -161,7 +190,7 @@ function populateResultsTables() {
                             <div class="comp-name">${s.Company}</div>
                             <div class="comp-sector">Evidence Score: <strong>${s.Total_Score}/100</strong></div>
                         </div>
-                        <span class="badge ${badgeClass}">${s.Classification.split(' — ')[0].split(' ')[1]}</span>
+                        <span class="badge ${badgeClass}">${badgeLabel}</span>
                     </div>
                     <div style="font-size: 0.72rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem 0.5rem; color: var(--text-secondary); margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid rgba(255,255,255,0.03)">
                         <div>Timing: <strong>${s["Timing Proximity"]}</strong></div>
@@ -169,6 +198,7 @@ function populateResultsTables() {
                         <div>Hiring: <strong>${s["Post-Layoff AI Hiring"]}</strong></div>
                         <div>Pandemic: <strong>${s["Inv. Pandemic Index"]}</strong></div>
                     </div>
+                    ${summary ? `<div class="comp-summary" style="font-size: 0.74rem; color: var(--text-secondary); line-height: 1.45; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.03);">${summary}</div>` : ''}
                 </div>
             `;
         }).join('');
@@ -348,7 +378,7 @@ function initCharts() {
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
                 circumference: 180,
                 rotation: 270,
                 cutout: '80%',
