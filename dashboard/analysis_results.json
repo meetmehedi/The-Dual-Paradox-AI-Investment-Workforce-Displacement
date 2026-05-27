@@ -1,0 +1,514 @@
+{
+  "layer2_strategy_matrix": [
+    {
+      "Company": "Amazon",
+      "strategy": "Augmentation",
+      "ey_type": "no_cut"
+    },
+    {
+      "Company": "Microsoft",
+      "strategy": "Mixed",
+      "ey_type": "cut"
+    },
+    {
+      "Company": "Google",
+      "strategy": "Augmentation",
+      "ey_type": "no_cut"
+    },
+    {
+      "Company": "Cloudflare",
+      "strategy": "Displacement",
+      "ey_type": "cut"
+    },
+    {
+      "Company": "UPS",
+      "strategy": "Displacement",
+      "ey_type": "cut"
+    },
+    {
+      "Company": "Meta",
+      "strategy": "Augmentation",
+      "ey_type": "no_cut"
+    },
+    {
+      "Company": "Workday",
+      "strategy": "Mixed",
+      "ey_type": "cut"
+    },
+    {
+      "Company": "Oracle",
+      "strategy": "Mixed",
+      "ey_type": "cut"
+    },
+    {
+      "Company": "Intel",
+      "strategy": "Mixed",
+      "ey_type": "cut"
+    },
+    {
+      "Company": "Salesforce",
+      "strategy": "Augmentation",
+      "ey_type": "no_cut"
+    },
+    {
+      "Company": "Block",
+      "strategy": "Displacement",
+      "ey_type": "cut"
+    },
+    {
+      "Company": "Omnicom",
+      "strategy": "Displacement",
+      "ey_type": "cut"
+    }
+  ],
+  "layer2_timing_analysis": [
+    {
+      "Company": "Amazon",
+      "lag_quarters": "0",
+      "layoff_peak_q": "2025Q4",
+      "ai_announce_q": "2025Q4",
+      "Simultaneous": "True"
+    },
+    {
+      "Company": "Microsoft",
+      "lag_quarters": "0",
+      "layoff_peak_q": "2025Q2",
+      "ai_announce_q": "2025Q1",
+      "Simultaneous": "True"
+    },
+    {
+      "Company": "Google",
+      "lag_quarters": "1",
+      "layoff_peak_q": "2025Q1",
+      "ai_announce_q": "2024Q4",
+      "Simultaneous": "True"
+    },
+    {
+      "Company": "Cloudflare",
+      "lag_quarters": "0",
+      "layoff_peak_q": "2025Q4",
+      "ai_announce_q": "2025Q4",
+      "Simultaneous": "True"
+    },
+    {
+      "Company": "UPS",
+      "lag_quarters": "0",
+      "layoff_peak_q": "2025Q1",
+      "ai_announce_q": "2025Q1",
+      "Simultaneous": "True"
+    },
+    {
+      "Company": "Meta",
+      "lag_quarters": "1",
+      "layoff_peak_q": "2025Q1",
+      "ai_announce_q": "2024Q4",
+      "Simultaneous": "True"
+    },
+    {
+      "Company": "Workday",
+      "lag_quarters": "0",
+      "layoff_peak_q": "2025Q3",
+      "ai_announce_q": "2025Q3",
+      "Simultaneous": "True"
+    },
+    {
+      "Company": "Oracle",
+      "lag_quarters": "0",
+      "layoff_peak_q": "2026Q1",
+      "ai_announce_q": "2026Q1",
+      "Simultaneous": "True"
+    },
+    {
+      "Company": "Intel",
+      "lag_quarters": "1",
+      "layoff_peak_q": "2025Q3",
+      "ai_announce_q": "2025Q2",
+      "Simultaneous": "True"
+    },
+    {
+      "Company": "Salesforce",
+      "lag_quarters": "0",
+      "layoff_peak_q": "2025Q4",
+      "ai_announce_q": "2025Q4",
+      "Simultaneous": "True"
+    },
+    {
+      "Company": "Block",
+      "lag_quarters": "3",
+      "layoff_peak_q": "2026Q1",
+      "ai_announce_q": "2025Q2",
+      "Simultaneous": "False"
+    },
+    {
+      "Company": "Omnicom",
+      "lag_quarters": "4",
+      "layoff_peak_q": "2025Q4",
+      "ai_announce_q": "2024Q4",
+      "Simultaneous": "False"
+    }
+  ],
+  "rq5_investment_paradox": [
+    {
+      "sector": "CRM/Cloud",
+      "total_ai_investment": "6284.817083185674",
+      "total_layoffs": "1671",
+      "avg_layoff_rate": "0.0023324117063139443",
+      "avg_ai_capex_ratio": "0.17116755089065452",
+      "corr_label": "High AI CapEx"
+    },
+    {
+      "sector": "E-Commerce/Cloud",
+      "total_ai_investment": "27322.34541848325",
+      "total_layoffs": "14645",
+      "avg_layoff_rate": "0.004657614080259689",
+      "avg_ai_capex_ratio": "0.17131095369536242",
+      "corr_label": "High AI CapEx"
+    },
+    {
+      "sector": "Enterprise Software",
+      "total_ai_investment": "12984.676035578997",
+      "total_layoffs": "30513",
+      "avg_layoff_rate": "0.021257094444453534",
+      "avg_ai_capex_ratio": "0.17285797141248818",
+      "corr_label": "High AI CapEx"
+    },
+    {
+      "sector": "Fintech",
+      "total_ai_investment": "973.881400246361",
+      "total_layoffs": "4392",
+      "avg_layoff_rate": "0.03864631472398624",
+      "avg_ai_capex_ratio": "0.1690354835786635",
+      "corr_label": "Low AI CapEx"
+    },
+    {
+      "sector": "HR Software",
+      "total_ai_investment": "1641.5672661106798",
+      "total_layoffs": "2185",
+      "avg_layoff_rate": "0.0117822963663855",
+      "avg_ai_capex_ratio": "0.17471699778099317",
+      "corr_label": "High AI CapEx"
+    },
+    {
+      "sector": "Logistics",
+      "total_ai_investment": "37011.53004071699",
+      "total_layoffs": "48488",
+      "avg_layoff_rate": "0.011193374606900043",
+      "avg_ai_capex_ratio": "0.16874804051868025",
+      "corr_label": "Low AI CapEx"
+    },
+    {
+      "sector": "Media/Advertising",
+      "total_ai_investment": "5755.148535804357",
+      "total_layoffs": "4461",
+      "avg_layoff_rate": "0.0066476658897277",
+      "avg_ai_capex_ratio": "0.1689463382699872",
+      "corr_label": "Low AI CapEx"
+    },
+    {
+      "sector": "Network/Security",
+      "total_ai_investment": "429.17814051058036",
+      "total_layoffs": "1508",
+      "avg_layoff_rate": "0.032581159797515497",
+      "avg_ai_capex_ratio": "0.17233925590055263",
+      "corr_label": "High AI CapEx"
+    },
+    {
+      "sector": "Semiconductors",
+      "total_ai_investment": "9619.923377400595",
+      "total_layoffs": "10461",
+      "avg_layoff_rate": "0.0093329513585896",
+      "avg_ai_capex_ratio": "0.16969402019118127",
+      "corr_label": "Low AI CapEx"
+    },
+    {
+      "sector": "Social Media",
+      "total_ai_investment": "5197.915734297512",
+      "total_layoffs": "3909",
+      "avg_layoff_rate": "0.006593760355484745",
+      "avg_ai_capex_ratio": "0.17077101668463465",
+      "corr_label": "High AI CapEx"
+    },
+    {
+      "sector": "Technology",
+      "total_ai_investment": "31438.002429425236",
+      "total_layoffs": "8288",
+      "avg_layoff_rate": "0.0021942357745910555",
+      "avg_ai_capex_ratio": "0.1716653226440398",
+      "corr_label": "High AI CapEx"
+    }
+  ],
+  "obj5_policy_gaps": [
+    {
+      "Gap": "Mandatory AI Disclosure in Restructuring Filings",
+      "Current_Adequacy": "0",
+      "Evidence_Base": "SEC/labor ministry \u2014 no standard exists",
+      "Priority": "Critical"
+    },
+    {
+      "Gap": "Reskilling Infrastructure Scale",
+      "Current_Adequacy": "35",
+      "Evidence_Base": "48% demand training; 50% get low support",
+      "Priority": "High"
+    },
+    {
+      "Gap": "Early-Career Entry Point Protection Mechanism",
+      "Current_Adequacy": "5",
+      "Evidence_Base": "No policy framework for 22-25 cohort",
+      "Priority": "Critical"
+    },
+    {
+      "Gap": "International AI Employment Coordination (G20/WEF)",
+      "Current_Adequacy": "10",
+      "Evidence_Base": "No binding cross-border framework exists",
+      "Priority": "High"
+    },
+    {
+      "Gap": "AI-Washing Detection & Enforcement",
+      "Current_Adequacy": "0",
+      "Evidence_Base": "LSE: 15-25% of cuts are AI-washed",
+      "Priority": "Critical"
+    }
+  ],
+  "obj1_classification_scores": [
+    {
+      "Company": "Amazon",
+      "Timing Proximity": "28",
+      "Specificity": "20",
+      "Post-Layoff AI Hiring": "22",
+      "Inv. Pandemic Index": "10",
+      "Total_Score": "80",
+      "Classification": "Class A/B \u2014 Genuine"
+    },
+    {
+      "Company": "Microsoft",
+      "Timing Proximity": "28",
+      "Specificity": "22",
+      "Post-Layoff AI Hiring": "24",
+      "Inv. Pandemic Index": "12",
+      "Total_Score": "86",
+      "Classification": "Class A/B \u2014 Genuine"
+    },
+    {
+      "Company": "Google",
+      "Timing Proximity": "25",
+      "Specificity": "18",
+      "Post-Layoff AI Hiring": "21",
+      "Inv. Pandemic Index": "12",
+      "Total_Score": "76",
+      "Classification": "Class A/B \u2014 Genuine"
+    },
+    {
+      "Company": "Cloudflare",
+      "Timing Proximity": "30",
+      "Specificity": "25",
+      "Post-Layoff AI Hiring": "24",
+      "Inv. Pandemic Index": "16",
+      "Total_Score": "95",
+      "Classification": "Class A/B \u2014 Genuine"
+    },
+    {
+      "Company": "UPS",
+      "Timing Proximity": "30",
+      "Specificity": "24",
+      "Post-Layoff AI Hiring": "20",
+      "Inv. Pandemic Index": "16",
+      "Total_Score": "90",
+      "Classification": "Class A/B \u2014 Genuine"
+    },
+    {
+      "Company": "Meta",
+      "Timing Proximity": "22",
+      "Specificity": "17",
+      "Post-Layoff AI Hiring": "18",
+      "Inv. Pandemic Index": "10",
+      "Total_Score": "67",
+      "Classification": "Class A/B \u2014 Genuine"
+    },
+    {
+      "Company": "Workday",
+      "Timing Proximity": "26",
+      "Specificity": "20",
+      "Post-Layoff AI Hiring": "22",
+      "Inv. Pandemic Index": "13",
+      "Total_Score": "81",
+      "Classification": "Class A/B \u2014 Genuine"
+    },
+    {
+      "Company": "Oracle",
+      "Timing Proximity": "24",
+      "Specificity": "16",
+      "Post-Layoff AI Hiring": "18",
+      "Inv. Pandemic Index": "14",
+      "Total_Score": "72",
+      "Classification": "Class A/B \u2014 Genuine"
+    },
+    {
+      "Company": "Intel",
+      "Timing Proximity": "22",
+      "Specificity": "15",
+      "Post-Layoff AI Hiring": "16",
+      "Inv. Pandemic Index": "14",
+      "Total_Score": "67",
+      "Classification": "Class A/B \u2014 Genuine"
+    },
+    {
+      "Company": "Salesforce",
+      "Timing Proximity": "24",
+      "Specificity": "18",
+      "Post-Layoff AI Hiring": "20",
+      "Inv. Pandemic Index": "13",
+      "Total_Score": "75",
+      "Classification": "Class A/B \u2014 Genuine"
+    },
+    {
+      "Company": "Block",
+      "Timing Proximity": "14",
+      "Specificity": "8",
+      "Post-Layoff AI Hiring": "10",
+      "Inv. Pandemic Index": "4",
+      "Total_Score": "36",
+      "Classification": "Class C \u2014 AI-Washed"
+    },
+    {
+      "Company": "Omnicom",
+      "Timing Proximity": "12",
+      "Specificity": "7",
+      "Post-Layoff AI Hiring": "9",
+      "Inv. Pandemic Index": "5",
+      "Total_Score": "33",
+      "Classification": "Class C \u2014 AI-Washed"
+    }
+  ],
+  "obj2_macro_quantification": [
+    {
+      "Metric": "AI % of Total Layoffs (2025)",
+      "Value": "4.70%"
+    },
+    {
+      "Metric": "YoY Growth in AI-Cited Cuts",
+      "Value": "+1096%"
+    },
+    {
+      "Metric": "% of MIT Ceiling Realised",
+      "Value": "18.8%"
+    },
+    {
+      "Metric": "Displacement Headroom Left",
+      "Value": "81.2%"
+    },
+    {
+      "Metric": "Goldman Annual AI Job Loss",
+      "Value": "192,000"
+    },
+    {
+      "Metric": "WEF 2030 Net Job Creation",
+      "Value": "+78,000,000"
+    }
+  ],
+  "rq6_layoff_attribution_decomposition": [
+    {
+      "Driver": "DOGE / Government Restructuring",
+      "Count": "293753",
+      "Share_pct": "25.11"
+    },
+    {
+      "Driver": "Post-Pandemic Demand Correction",
+      "Count": "380000",
+      "Share_pct": "32.48"
+    },
+    {
+      "Driver": "AI-Attributed (Challenger data)",
+      "Count": "55000",
+      "Share_pct": "4.7"
+    },
+    {
+      "Driver": "Market/Economic Conditions",
+      "Count": "250000",
+      "Share_pct": "21.37"
+    },
+    {
+      "Driver": "Other (Cost Optimisation, M&A, etc.)",
+      "Count": "191247",
+      "Share_pct": "16.35"
+    }
+  ],
+  "layer2_sectoral_correlation": [
+    {
+      "Sector": "CRM/Cloud",
+      "Correlation": "0.3982",
+      "N": "9"
+    },
+    {
+      "Sector": "E-Commerce/Cloud",
+      "Correlation": "0.3285",
+      "N": "9"
+    },
+    {
+      "Sector": "Enterprise Software",
+      "Correlation": "0.5294",
+      "N": "9"
+    },
+    {
+      "Sector": "Fintech",
+      "Correlation": "0.5102",
+      "N": "9"
+    },
+    {
+      "Sector": "HR Software",
+      "Correlation": "0.2783",
+      "N": "9"
+    },
+    {
+      "Sector": "Logistics",
+      "Correlation": "0.4821",
+      "N": "9"
+    },
+    {
+      "Sector": "Media/Advertising",
+      "Correlation": "0.3935",
+      "N": "9"
+    },
+    {
+      "Sector": "Network/Security",
+      "Correlation": "0.372",
+      "N": "9"
+    },
+    {
+      "Sector": "Semiconductors",
+      "Correlation": "0.2719",
+      "N": "9"
+    },
+    {
+      "Sector": "Social Media",
+      "Correlation": "0.1922",
+      "N": "9"
+    },
+    {
+      "Sector": "Technology",
+      "Correlation": "0.2563",
+      "N": "18"
+    }
+  ],
+  "layer3_cohort_results": [
+    {
+      "Source": "Stanford (2025)",
+      "Cohort": "Ages 22-25 in top AI-exposed jobs",
+      "RelDecline%": "16.0"
+    },
+    {
+      "Source": "J.P. Morgan (2025)",
+      "Cohort": "Ages 22-25 in AI-exposed vs peers",
+      "RelDecline%": "13.0"
+    },
+    {
+      "Source": "Model 4 DiD",
+      "Cohort": "High-exposure occs post-2022",
+      "RelDecline%": "0.009"
+    },
+    {
+      "Source": "Model 5 DiD (FE)",
+      "Cohort": "High-exposure occs (Occ+Year FE)",
+      "RelDecline%": "18.509"
+    }
+  ]
+}

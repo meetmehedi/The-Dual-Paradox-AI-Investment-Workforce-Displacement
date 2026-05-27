@@ -1,0 +1,13 @@
+Company,Timing Proximity,Specificity,Post-Layoff AI Hiring,Inv. Pandemic Index,Total_Score,Classification
+Amazon,28,20,22,10,80,Class A/B — Genuine
+Microsoft,28,22,24,12,86,Class A/B — Genuine
+Google,25,18,21,12,76,Class A/B — Genuine
+Cloudflare,30,25,24,16,95,Class A/B — Genuine
+UPS,30,24,20,16,90,Class A/B — Genuine
+Meta,22,17,18,10,67,Class A/B — Genuine
+Workday,26,20,22,13,81,Class A/B — Genuine
+Oracle,24,16,18,14,72,Class A/B — Genuine
+Intel,22,15,16,14,67,Class A/B — Genuine
+Salesforce,24,18,20,13,75,Class A/B — Genuine
+Block,14,8,10,4,36,Class C — AI-Washed
+Omnicom,12,7,9,5,33,Class C — AI-Washed

@@ -1,0 +1,274 @@
+import os
+import json
+
+workspace_dir = "/Users/md.mehedihasan/Documents/Layoff"
+dashboard_dir = os.path.join(workspace_dir, "dashboard")
+os.makedirs(dashboard_dir, exist_ok=True)
+
+json_path = os.path.join(dashboard_dir, "research_data.json")
+
+data = {
+    "indicators": [
+        {
+            "id": "total_layoffs",
+            "label": "Total U.S. Layoffs (2025)",
+            "value": "1.17M",
+            "change": "Highest since 2020",
+            "source": "Challenger, Gray & Christmas",
+            "description": "Macro-level U.S. layoffs driven by post-pandemic rightsizing, government restructure, and strategic capital reallocation.",
+            "color": "var(--primary-glow)"
+        },
+        {
+            "id": "ai_attributed",
+            "label": "AI-Attributed Layoffs",
+            "value": "55,000",
+            "change": "+1,100% YoY",
+            "source": "Challenger, Gray & Christmas",
+            "description": "Redundancies where AI automation was explicitly cited by leadership as a structural or strategic factor.",
+            "color": "var(--rose-glow)"
+        },
+        {
+            "id": "early_career_decline",
+            "label": "Early-Career Emp. Decline",
+            "value": "13%-16%",
+            "change": "Relative Drop",
+            "source": "Stanford / J.P. Morgan",
+            "description": "Significant reduction in employment of workers aged 22-25 in the most AI-exposed cognitive occupations post-2022.",
+            "color": "var(--amber-glow)"
+        },
+        {
+            "id": "displacement_capacity",
+            "label": "Economic Displacement Feasibility",
+            "value": "11.7%",
+            "change": "$1.2T in Wages",
+            "source": "MIT Project Iceberg",
+            "description": "The proportion of total U.S. tasks that can be performed by AI at an economically competitive or lower cost.",
+            "color": "var(--violet-glow)"
+        },
+        {
+            "id": "reskilling_need",
+            "label": "Workforce Reskilling by 2030",
+            "value": "40%+",
+            "change": "Global Need",
+            "source": "McKinsey Global Institute",
+            "description": "Percentage of global workers requiring significant upskilling or occupational shifts due to AI deployment.",
+            "color": "var(--emerald-glow)"
+        },
+        {
+            "id": "net_jobs_2030",
+            "label": "Net Job Creation by 2030",
+            "value": "+78M",
+            "change": "170M New / 92M Displaced",
+            "source": "WEF Future of Jobs 2025",
+            "description": "World Economic Forum projection of net-positive employment outcomes, masked by extreme structural and regional mismatches.",
+            "color": "var(--cyan-glow)"
+        }
+    ],
+    "companies": [
+        {
+            "company": "Amazon",
+            "sector": "E-Commerce / Cloud",
+            "layoffs": 14000,
+            "ai_investment": "$4.0B",
+            "year": 2025,
+            "classification": "Class B - Indirect Restructuring",
+            "evidence_strength": "High",
+            "summary": "Amazon announced its largest corporate layoff round in history (14,000 roles) in October 2025. CEO Andy Jassy explicitly framed this as streamlined corporate layers to fund massive strategic 'bets' like AI, including AWS silicon and a $4B investment in Anthropic.",
+            "strategy": "Augmentation / Re-platforming",
+            "impact_rating": "Medium-High",
+            "badge_color": "b-indirect"
+        },
+        {
+            "company": "Microsoft",
+            "sector": "Technology",
+            "layoffs": 6000,
+            "ai_investment": "$80.0B",
+            "year": 2025,
+            "classification": "Class B - Indirect Restructuring",
+            "evidence_strength": "High",
+            "summary": "Pledged $80 billion globally to AI datacenters and chips, while conducting multiple corporate layoffs totaling over 6,000 workers to streamline operations. Administrative, customer support, and sales roles were automated using Microsoft's internal Copilots.",
+            "strategy": "Workflow Automation",
+            "impact_rating": "High",
+            "badge_color": "b-indirect"
+        },
+        {
+            "company": "Google (Alphabet)",
+            "sector": "Technology",
+            "layoffs": 1000,
+            "ai_investment": "$16.0B",
+            "year": 2025,
+            "classification": "Class B - Indirect Restructuring",
+            "evidence_strength": "Medium-High",
+            "summary": "Cut over 1,000 roles in design, cloud engineering, and operations, while simultaneously investing $16B in an AI research and infrastructure hub in India and a 1-gigawatt green energy datacenter. Employees were urged to upskill to remain competitive.",
+            "strategy": "Skill Re-alignment",
+            "impact_rating": "Medium",
+            "badge_color": "b-indirect"
+        },
+        {
+            "company": "Cloudflare",
+            "sector": "Network / Security",
+            "layoffs": 1100,
+            "ai_investment": "600%+ Internal AI Use",
+            "year": "2025/26",
+            "classification": "Class A - Direct Displacement",
+            "evidence_strength": "Very High",
+            "summary": "The most transparent case of direct AI replacement. Cloudflare cut 20% of its workforce (1,100 roles) in a complete reorganization. CEO Matthew Prince revealed that internal AI agents running marketing, support, and engineering had automated equivalent work.",
+            "strategy": "Direct Agent Substitution",
+            "impact_rating": "Severe",
+            "badge_color": "a-direct"
+        },
+        {
+            "company": "UPS",
+            "sector": "Logistics",
+            "layoffs": 48000,
+            "ai_investment": "AI-Enabled Logistics",
+            "year": 2025,
+            "classification": "Class A - Direct Displacement",
+            "evidence_strength": "High",
+            "summary": "Announced a massive reduction of 48,000 roles under its 'Network of the Future' initiative. UPS closed 93 facilities and integrated AI routing algorithms and logistics robotics to move higher volumes with far fewer manual package sorters and operations managers.",
+            "strategy": "Physical / Algorithmic Automation",
+            "impact_rating": "Severe",
+            "badge_color": "a-direct"
+        },
+        {
+            "company": "Meta",
+            "sector": "Social Media",
+            "layoffs": 3600,
+            "ai_investment": "AI Agents & Infra",
+            "year": 2025,
+            "classification": "Class B - Indirect Restructuring",
+            "evidence_strength": "Medium",
+            "summary": "Laid off 3,600 employees in 2025 during their pivot to 'Llama' and AI hardware development. Restructured layers to clear overhead while aggressively hiring niche PhD researchers in Silicon Valley and London, paying top-of-market compensation.",
+            "strategy": "Skill Re-weighting",
+            "impact_rating": "Medium",
+            "badge_color": "b-indirect"
+        },
+        {
+            "company": "Workday",
+            "sector": "HR Software",
+            "layoffs": 1750,
+            "ai_investment": "AI-First Product Pivot",
+            "year": 2025,
+            "classification": "Class B - Indirect Restructuring",
+            "evidence_strength": "High",
+            "summary": "Cut 8.5% of its workforce (~1,750 roles) to re-allocate capital toward its new AI-first HR and financial planning products. Stated that the corporate reorganization was necessary to focus entirely on automated cloud software.",
+            "strategy": "Product Portfolio Shift",
+            "impact_rating": "Medium",
+            "badge_color": "b-indirect"
+        },
+        {
+            "company": "Oracle",
+            "sector": "Enterprise Software",
+            "layoffs": 30000,
+            "ai_investment": "AI Cloud Datacenters",
+            "year": 2026,
+            "classification": "Class B - Indirect Restructuring",
+            "evidence_strength": "Medium",
+            "summary": "Oracle conducted a sweeping layoff of ~30,000 positions globally in early 2026. This was driven by a re-alignment to fund and build their next-generation sovereign AI clouds and automated database platforms.",
+            "strategy": "Infrastructure Pivot",
+            "impact_rating": "High",
+            "badge_color": "b-indirect"
+        },
+        {
+            "company": "Intel",
+            "sector": "Semiconductors",
+            "layoffs": 10000,
+            "ai_investment": "Chip AI R&D Acceleration",
+            "year": 2025,
+            "classification": "Class B - Indirect Restructuring",
+            "evidence_strength": "Medium",
+            "summary": "Cut over 10,000 corporate and manufacturing-adjacent jobs during a major structural cost-reduction effort. The saved capital was pledged directly to fund acceleration of AI foundry and silicon R&D in an attempt to challenge Nvidia's dominance.",
+            "strategy": "Foundry Cost Reallocation",
+            "impact_rating": "High",
+            "badge_color": "b-indirect"
+        },
+        {
+            "company": "Salesforce",
+            "sector": "CRM / Cloud",
+            "layoffs": 1200,
+            "ai_investment": "Agentforce AI Platform",
+            "year": 2025,
+            "classification": "Class B - Indirect Restructuring",
+            "evidence_strength": "Medium",
+            "summary": "Salesforce reduced its sales and client relations headcounts by 1,200 while heavily pushing its autonomous 'Agentforce' platform, demonstrating a corporate strategy to transition customer support from human reps to software agents.",
+            "strategy": "Customer Service Autonomization",
+            "impact_rating": "Medium",
+            "badge_color": "b-indirect"
+        },
+        {
+            "company": "Block (Square)",
+            "sector": "Fintech",
+            "layoffs": 4000,
+            "ai_investment": "AI Operational Efficiencies",
+            "year": 2026,
+            "classification": "Class C - AI-Washed",
+            "evidence_strength": "Low",
+            "summary": "Jack Dorsey's Block announced a 10% staff reduction (~4,000 roles) in February 2026, citing plans to automate operations with AI. However, independent audits showed the primary reason was a correction of their extreme pandemic headcount bubble (+65%), with minimal active AI deployment in affected teams.",
+            "strategy": "Pandemic Bubble Correction",
+            "impact_rating": "High",
+            "badge_color": "c-washed"
+        },
+        {
+            "company": "Omnicom",
+            "sector": "Media / Advertising",
+            "layoffs": 4000,
+            "ai_investment": "Generative AI Creative",
+            "year": 2025,
+            "classification": "Class C - AI-Washed",
+            "evidence_strength": "Low",
+            "summary": "Announced ~4,000 layoffs post-acquisition, citing generative AI as enabling creative agility and scale. Regulators and union leaders noted the restructuring was a traditional corporate consolidation, with AI cited primarily to bolster stock price and placate investors.",
+            "strategy": "Corporate Consolidation",
+            "impact_rating": "Medium",
+            "badge_color": "c-washed"
+        }
+    ],
+    "citations": {
+        "NBER_2026": {
+            "title": "Firm Data on AI (NBER Working Paper 34836)",
+            "authors": "Yotzov, Barrero, Bloom, Bunn, Davis, Foster, Mizen, Thwaites, et al.",
+            "date": "February 2026",
+            "takeaway": "Based on a global survey of nearly 6,000 C-Suite executives: 69% of firms use AI actively, but 90% reported no impact on employment and 89% reported no impact on productivity to date, proving a major gap between hype and actual displacement.",
+            "type": "Academic Survey"
+        },
+        "Stanford_2025": {
+            "title": "Canaries in the Coal Mine?: Six Facts about the Recent Employment Effects of Artificial Intelligence",
+            "authors": "Erik Brynjolfsson, Bharat Chandar, and Ruyu Chen",
+            "date": "2025",
+            "takeaway": "Empirically documented a sharp 16% relative employment decline for early-career workers (ages 22-25) in AI-exposed cognitive occupations, demonstrating that new entrants bear the initial brunt of generative AI displacement.",
+            "type": "Econometric Analysis"
+        },
+        "LSE_2025": {
+            "title": "AI-Washing in Corporate Communications: Evidence from Multiple Sectors",
+            "authors": "London School of Economics Working Paper 2025-14",
+            "date": "2025",
+            "takeaway": "Identified the phenomenon of 'AI-washing' in labor markets, where firms cite AI as the causal factor for layoffs that are primarily economically motivated to mask business issues or pandemic overhiring.",
+            "type": "Qualitative Analysis"
+        },
+        "Challenger_2025": {
+            "title": "Annual Job Cut Report: Full Year 2025",
+            "authors": "Challenger, Gray & Christmas, Inc.",
+            "date": "2025",
+            "takeaway": "Tracked a total of 1.17 million U.S. corporate layoffs, with explicitly AI-attributed cuts reaching ~55,000. This represented an 1,100% year-on-year increase, but accounted for less than 5% of total job cuts.",
+            "type": "Industry Tracker"
+        },
+        "MIT_2025": {
+            "title": "Technical and Economic AI Displacement Capacity (Project Iceberg)",
+            "authors": "Massachusetts Institute of Technology",
+            "date": "November 2025",
+            "takeaway": "Shifted the paradigm from theoretical task exposure to actual economic feasibility, finding that AI can economically displace tasks representing 11.7% of the U.S. labor force ($1.2 trillion in wages).",
+            "type": "Economic Modeling"
+        },
+        "EY_2025": {
+            "title": "AI Productivity and Workforce Outcomes: December 2025 Survey",
+            "authors": "Ernst & Young Global LLP",
+            "date": "December 2025",
+            "takeaway": "Found that among organizations experiencing AI-driven productivity gains, only 17% opted to reduce headcount. The remaining 83% utilized AI as an augmentation tool to grow output and retain human capital.",
+            "type": "Industry Survey"
+        }
+    }
+}
+
+with open(json_path, "w") as f:
+    json.dump(data, f, indent=4)
+
+print("SUCCESS: JSON Compiled at", json_path)

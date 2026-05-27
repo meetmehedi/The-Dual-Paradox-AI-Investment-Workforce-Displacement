@@ -1,0 +1,13 @@
+Company,lag_quarters,layoff_peak_q,ai_announce_q,Simultaneous
+Amazon,0,2025Q4,2025Q4,True
+Microsoft,0,2025Q2,2025Q1,True
+Google,1,2025Q1,2024Q4,True
+Cloudflare,0,2025Q4,2025Q4,True
+UPS,0,2025Q1,2025Q1,True
+Meta,1,2025Q1,2024Q4,True
+Workday,0,2025Q3,2025Q3,True
+Oracle,0,2026Q1,2026Q1,True
+Intel,1,2025Q3,2025Q2,True
+Salesforce,0,2025Q4,2025Q4,True
+Block,3,2026Q1,2025Q2,False
+Omnicom,4,2025Q4,2024Q4,False

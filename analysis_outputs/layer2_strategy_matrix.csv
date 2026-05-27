@@ -1,0 +1,13 @@
+Company,strategy,ey_type
+Amazon,Augmentation,no_cut
+Microsoft,Mixed,cut
+Google,Augmentation,no_cut
+Cloudflare,Displacement,cut
+UPS,Displacement,cut
+Meta,Augmentation,no_cut
+Workday,Mixed,cut
+Oracle,Mixed,cut
+Intel,Mixed,cut
+Salesforce,Augmentation,no_cut
+Block,Displacement,cut
+Omnicom,Displacement,cut

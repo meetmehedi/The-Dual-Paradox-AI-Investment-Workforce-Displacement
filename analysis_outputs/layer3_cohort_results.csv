@@ -1,0 +1,5 @@
+Source,Cohort,RelDecline%
+Stanford (2025),Ages 22-25 in top AI-exposed jobs,16.0
+J.P. Morgan (2025),Ages 22-25 in AI-exposed vs peers,13.0
+Model 4 DiD,High-exposure occs post-2022,0.009
+Model 5 DiD (FE),High-exposure occs (Occ+Year FE),18.509
