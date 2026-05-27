@@ -126,7 +126,7 @@ If you wish to reference this working paper in the interim, please use the follo
 ```bibtex
 @unpublished{mehedi2026dualparadox,
   title={The Dual Paradox: AI Investment and Workforce Displacement (2024--2026)},
-  author={Hasan, Md. Mehedi},
+  author={Hasan, M. M., Molla, M. A., Rakib, R., Borhan, R., Based, M. A.},
   note={Working paper, under peer review. Available at: \url{https://github.com/meetmehedi/The-Dual-Paradox-AI-Investment-Workforce-Displacement}},
   year={2026}
 }
